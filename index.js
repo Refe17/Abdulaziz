@@ -22,13 +22,14 @@ bot.commands = new Discord.Collection();
   let args = messageArray.slice(1);
    let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
+  
    if (message.content.startsWith(prefix + "warn")) {
     if (message.author.id != "284151161291014144") return;
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("No");
     let botmessage = args.join(" ");
     message.delete().catch();
     message.channel.send(botmessage);
-   }
+   
  
      
    
@@ -205,6 +206,7 @@ bot.on(`message`, message=>{
      }
    })
   }
+ }
 })
  })
 
