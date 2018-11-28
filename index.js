@@ -2,8 +2,7 @@ const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const prefix = `$`
 bot.commands = new Discord.Collection();
-
-bot.on(`ready`, ()=>{
+ bot.on(`ready`, ()=>{
   console.log(`${bot.user.username} is online!`);
   console.log(`----------------`);
   console.log(`VAMPIRES Bot- Script By : Azoqz`);
@@ -13,10 +12,7 @@ bot.on(`ready`, ()=>{
   console.log(`Logged in as ${bot.user.tag}!`);
   bot.user.setStatus("dnd")
   bot.user.setGame(`$bc | Vampires`, "https://www.twitch.tv/azoqzmj")
-
-
-  
-bot.on("message", async message => {
+ bot.on("message", async message => {
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
   
@@ -24,31 +20,22 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
-
-  let commandfile = bot.commands.get(cmd.slice(prefix.length));
+   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
-
-
-
-  if (message.content.startsWith(prefix + "warn")) {
+   if (message.content.startsWith(prefix + "warn")) {
     if (message.author.id != "284151161291014144") return;
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("No");
     let botmessage = args.join(" ");
     message.delete().catch();
     message.channel.send(botmessage);
-
-  }
+   }
  
      
-
-
+   
+  
      
-
-
-
-  if (cmd === `${prefix}anime`){
-
-      let animeEmbed = new Discord.RichEmbed()
+   if (cmd === `${prefix}anime`){
+       let animeEmbed = new Discord.RichEmbed()
         .setDescription("Anime")
         .setTimestamp()
         .setColor("#96003e")
@@ -57,22 +44,16 @@ bot.on("message", async message => {
   }
   
       if (cmd === `${prefix}pornhub`){
-
-
-        let hubEmbed = new Discord.RichEmbed()
+         let hubEmbed = new Discord.RichEmbed()
           .setDescription("anime")
           .setTimestamp()
           .setColor("#96003e")
           .setImage("https://cdn.discordapp.com/attachments/515180049163485226/516665368291442700/56.png", 200, 200);
-
-      
-
-
-
-      return message.channel.send(hubEmbed); 
+       
+       return message.channel.send(hubEmbed); 
   }
-
-
+ const admins = require("../admins.json");
+ const settings = require("../config.json");
      if(cmd === `${prefix}help`) {
       let helpEmbed = new Discord.RichEmbed()
       .setDescription("Server Information - Thank you for using our bot")
@@ -83,7 +64,7 @@ bot.on("message", async message => {
     
       return message.channel.send(helpEmbed); 
      }
-
+ module.exports.run = async (client,message,args) => {
   if(cmd === `${prefix}ban`){
     message.delete();
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -91,7 +72,7 @@ bot.on("message", async message => {
     let bReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No m8 you can't do that");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No m8 you can't kick em");
-
+     if (module.exports.help.admin) {
     let banEmbed = new Discord.RichEmbed()
       .setDescription("NEW BAN!")
       .setColor("#96003e")
@@ -100,8 +81,8 @@ bot.on("message", async message => {
       .addField("By:", `${message.author} ID: ${message.author.id}`)
       .addField("Channel:", message.channel)
       .addField("Reason:", bReason);
-
-
+         if (admins.includes(message.author.id)) {
+             const m = await message.channel.send("Ping?");
     let banChannel = message.guild.channels.find(x=> x.name === "ban-log");
     if(!banChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(bUser).ban(bReason).then(()=>{
@@ -127,7 +108,7 @@ bot.on("message", async message => {
       .addField("By:", `${message.author} ID: ${message.author.id}`)
       .addField("Channel:", message.channel)
       .addField("Reason:", kReason);
-
+             m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`)
     let kickChannel = message.guild.channels.find(x=> x.name === "kick-log");
     if(!kickChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(kUser).kick(kReason).then(()=>{
@@ -136,13 +117,13 @@ bot.on("message", async message => {
       })
     })
  
-
-
-
+             message.delete();
+         }else{
+             const m = await message.channel.send("Ping?");
   
     
   }
-
+             m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`)
     if (cmd === `${prefix}info`){
       let bicon = bot.user.displayAvatarURL;
       let botEmbed = new Discord.RichEmbed()
@@ -159,23 +140,18 @@ bot.on("message", async message => {
      }
     
   
-
-
+   
+             message.delete();
+         }
+        
+        }else{
+        
+            const m = await message.channel.send("Ping?");
   
-
-
-  
-
-
-
-
-
-
-
-
-
-
-bot.on("message", message => {
+             m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`)
+             message.delete();
+    }
+ bot.on("message", message => {
   const args = message.content.split(" ").slice(1);
   if (message.content.startsWith(prefix + "clear")) {
 if (message.author.id != "284151161291014144") return;
@@ -183,13 +159,16 @@ if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You h
 if(!args[0]) return message.channel.send("Specify a Number")
 message.channel.bulkDelete(args[0]).then(()=> {
   message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
-
-})
+ })
 }
+ module.exports.help = {
+    name: "ping",
+    description: "deletes messages by providing number between 2 and 100",
+    admin: false,
+} 
 })
 bot.on(`message`, message=>{
-
-  if (message.content.startsWith(prefix + "bc")) {
+   if (message.content.startsWith(prefix + "bc")) {
     if (message.author.id != "502848560623255562")
     if (message.author.id != "284151161291014144") return;
   let args = message.content.split(" ").slice(1);
@@ -202,8 +181,7 @@ bot.on(`message`, message=>{
   message.delete();
   }
 })
-
-bot.on('message', message=>{
+ bot.on('message', message=>{
   if(message.channel.name == undefined){
     if(!message.author.bot){
       let args = message.content.split(" ").slice(0).join(" ");
@@ -216,7 +194,6 @@ bot.on('message', message=>{
       bot.channels.get('517272424316928010').send(embedArgs)
     }
 
-
   
   
   
@@ -226,10 +203,9 @@ bot.on('message', message=>{
   
   
      }
-
-  })
+   })
+  }
 })
-})
-
+ })
 
 bot.login(process.env.BOT_TOKEN)
