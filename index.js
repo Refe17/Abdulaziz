@@ -217,8 +217,9 @@ bot.on('message', message=>{
         .setTimestamp()
       bot.channels.get('517272424316928010').send(embedArgs)
     }
-    bot.on("message", message => {
+
       const m = await message.channel.send("Ping?");
+      if(!message.channel) message.channel.send("Pinging");
       m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`)
        message.delete();
   
@@ -229,10 +230,10 @@ bot.on('message', message=>{
   
   
   
-     })
+     }
 
-  }
+  })
 })
 })
-})
+
 bot.login(process.env.BOT_TOKEN)
