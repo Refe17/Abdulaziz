@@ -59,7 +59,7 @@ bot.on("message", async message => {
         return message.channel.send(animeEmbed); 
   }
   
-      if (cmd === `${prefix}pornhub`){
+      if (cmd === `${prefix}porn`){
 
 
         let hubEmbed = new Discord.RichEmbed()
