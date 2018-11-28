@@ -15,7 +15,7 @@ bot.on(`ready`, ()=>{
   bot.user.setGame(`$bc | Vampires`, "https://www.twitch.tv/azoqzmj")
 
 
-
+  
 bot.on("message", async message => {
   if (message.author.bot) return;
   if (message.channel.type === "dm") return;
@@ -41,9 +41,13 @@ bot.on("message", async message => {
  
      
 
-
+  bot.on("message", async message => {
+    const m = await message.channel.send("Ping?");
+    if(!message.channel) message.channel.send("Pinging");
+    m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`)
+     message.delete();
   
-  
+  })
      
 
 
@@ -218,10 +222,7 @@ bot.on('message', message=>{
       bot.channels.get('517272424316928010').send(embedArgs)
     }
 
-      const m = await message.channel.send("Ping?");
-      if(!message.channel) message.channel.send("Pinging");
-      m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`)
-       message.delete();
+
   
   
   
