@@ -28,6 +28,8 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
 
+
+
   if (message.content.startsWith(prefix + "warn")) {
     if (message.author.id != "284151161291014144") return;
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("No");
@@ -170,19 +172,7 @@ bot.on("message", async message => {
 
 
 
-     if(cmd === `${prefix}ping`){
-     const m = await message.channel.send("Ping?");
-     m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`)
-      message.delete();
- 
 
-
-
-
-
-
-
-    }
 
 
 
@@ -227,7 +217,19 @@ bot.on('message', message=>{
         .setTimestamp()
       bot.channels.get('517272424316928010').send(embedArgs)
     }
+    bot.on("message", message => {
+      const m = await message.channel.send("Ping?");
+      m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(client.ping)}ms`)
+       message.delete();
   
+  
+  
+  
+  
+  
+  
+  
+     })
 
   }
 })
