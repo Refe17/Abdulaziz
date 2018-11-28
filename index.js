@@ -1,4 +1,3 @@
-const botconfig = require("./botconfig.json");
 const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const prefix = `$`
@@ -14,31 +13,6 @@ bot.on(`ready`, ()=>{
   console.log(`Logged in as ${bot.user.tag}!`);
   bot.user.setStatus("dnd")
   bot.user.setGame(`$bc | Vampires`, "https://www.twitch.tv/azoqzmj")
-
-  var events = require(`events`);
-  var emitter = new events.EventEmitter();
-emitter.once('log', () => console.log('log once'));
-
-// Returns a new Array with a function `onceWrapper` which has a property
-// `listener` which contains the original listener bound above
-const listeners = emitter.rawListeners('log');
-const logFnWrapper = listeners[0];
-
-// logs "log once" to the console and does not unbind the `once` event
-logFnWrapper.listener();
-
-// logs "log once" to the console and removes the listener
-logFnWrapper();
-
-emitter.on('log', () => console.log('log persistently'));
-// will return a new Array with a single function bound by `.on()` above
-const newListeners = emitter.rawListeners('log');
-
-// logs "log persistently" twice
-newListeners[0]();
-emitter.emit('log');
-emitter.setMaxListeners(0)
-
 
 
 
@@ -256,4 +230,4 @@ bot.on('message', message=>{
   }
 })
 })
-bot.login(botconfig.token)
+bot.login(process.env.BOT_TOKEN)
