@@ -31,15 +31,35 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
 
-  if (message.content.startsWith(prefix + "warn")) {
+    if (message.content.startsWith(prefix + "warn")) {
 
+    let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!wUser) return message.channel.send("Please Mention a User")
+    let wReason = args.join(" ").slice(22);
     if(!message.member.roles.find( r => r.name === '● Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
     if(!args[0]) return message.channel.send("Please Type what you want to say following the command.")
+
+
+    let warnEmbed = new Discord.RichEmbed()
+      .setDescription("NEW WARN!")
+      .setColor("#96003e")
+      .setTimestamp()
+      .addField("For:", `${wUser} ID: ${wUser.id}`)
+      .addField("By:", `${message.author} ID: ${message.author.id}`)
+      .addField("Channel:", message.channel)
+      .addField("Reason:", wReason);
+
+      let warnChannel = message.guild.channels.find(x=> x.name === "warn-log");
+      if(!warnChannel) return message.channel.send("Can't Find Channel");
+      message.guild.member(wUser).warn(wReason).then(()=>{
+        warnChannel.send(warnEmbed).then(()=>{
     let botmessage = args.join(" ");
     message.delete().catch();
     message.channel.send(botmessage);
 
-  }
+  })
+})
+    
  
      
 
@@ -184,7 +204,7 @@ bot.on("message", async message => {
 
 
 
-    })
+    }
 
 
 
@@ -232,6 +252,7 @@ bot.on('message', message=>{
   
 
   }
+})
 })
 })
 bot.login(process.env.BOT_TOKEN)
