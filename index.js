@@ -101,7 +101,7 @@ bot.on("message", async message => {
     if(!kickChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(kUser).kick(kReason).then(()=>{
       kickChannel.send(kickEmbed).then(()=>{
-          return message.channel.send("**DONE!**")
+          return message.channel(kickEmbed).send("**DONE!**")
       })
     })
  
