@@ -154,15 +154,7 @@ bot.on("message", async message => {
       return message.channel.send(botEmbed); 
      }
     
-     bot.on("message", message => {
-      const args = message.content.split(" ").slice(1);
-      if (message.content.startsWith(prefix + "clear")) {
-    if (message.author.id != "284151161291014144") return;
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You have no permission to do this command")
-    if(!args[0]) return message.channel.send("Specify a Number")
-    message.channel.bulkDelete(args[0]).then(()=> {
-      message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
-    })
+    
 
 
      if (cmd === `${prefix}warn`){
@@ -225,9 +217,6 @@ bot.on('message', message=>{
   }
 })
      }
-    }
+    })
   })
-})
-})
-
 bot.login(process.env.BOT_TOKEN)
