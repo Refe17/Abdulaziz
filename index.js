@@ -32,7 +32,7 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args);
 
   if (message.content.startsWith(prefix + "warn")) {
-   if (message.bot.guilds.get.roles.find(x=> x.name === "● Discord STAFF"));
+   if (message.bot.guild)get.roles.find(x=> x.name === "● Discord STAFF");
     if(!message.member) return message.reply("You Have No Permission");
 
     let botmessage = args.join(" ");
