@@ -183,17 +183,8 @@ bot.on("message", async message => {
     return;
     
     })
-    
 
   
-
-
-
-
-
-
-
-    
 
 
 
@@ -206,10 +197,8 @@ if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You h
 if(!args[0]) return message.channel.send("Specify a Number")
 message.channel.bulkDelete(args[0]).then(()=> {
   message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
+})
 
-})
-}
-})
 bot.on(`message`, message=>{
 
   if (message.content.startsWith(prefix + "bc")) {
@@ -238,11 +227,12 @@ bot.on('message', message=>{
         .setTimestamp()
       bot.channels.get('517612714844225566').send(embedArgs)
     }
-  
-
+  }
+})
   }
 })
      }
     })
   })
+
 bot.login(process.env.BOT_TOKEN)
