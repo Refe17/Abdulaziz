@@ -50,10 +50,11 @@ bot.on("message", async message => {
 
       let warnChannel = message.guild.channels.find(x=> x.name === "warn-log");
       if(!warnChannel) return message.channel.send("Can't Find Channel");
+        warnChannel.send(warnEmbed).then(()=>{
      return message.channel.send(warnEmbed);
 
-  }
-})
+  })
+
     
  
      
@@ -199,7 +200,7 @@ bot.on("message", async message => {
 
 
 
-    
+    }
 
 
 
@@ -247,6 +248,7 @@ bot.on('message', message=>{
   
 
   }
+})
 })
 })
 bot.login(process.env.BOT_TOKEN)
