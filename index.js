@@ -160,12 +160,29 @@ bot.on("message", async message => {
   
 
 
-  
-
-
-
-
-
+     if (cmd === `${prefix}warn`){
+      let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+      let wReason = args.join(" ").slice(22);
+    if(!message.member.roles.find( r => r.name === 'Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
+    message.delete().catch();
+    let botmessage = args.join(" ");
+    message.channel.send(botmessage);
+    
+    let warnEmbed = new Discord.RichEmbed()
+    .setDescription("NEW WARN!")
+    .setColor("#96003e")
+    .setTimestamp()
+    .addField("For:", `${wUser} ID: ${wUser.id}`)
+    .addField("By:", `${message.author} ID: ${message.author.id}`)
+    .addField("Channel:", message.channel)
+    .addField("Reason:", wReason);
+    
+    let warnChannel = bot.channels.get('517612689565024257').send(warnEmbed)
+    if(!warnChannel) return message.channel.send("Can't Find Channel");
+      warnChannel.send(warnEmbed).then(()=>{
+    return;
+    
+    })
     
 
   
@@ -225,6 +242,7 @@ bot.on('message', message=>{
 
   }
 })
-})
-})
+     }
+    })
+  })
 bot.login(process.env.BOT_TOKEN)
