@@ -32,11 +32,9 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args);
 
     if (message.content.startsWith(prefix + "warn")) {
-      message.delete()
-    let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    let wReason = args.join(" ").slice(22);
     if(!message.member.roles.find( r => r.name === '● Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
-
+    message.delete().catch();
+    message.channel.send(botmessage);
 
     let warnEmbed = new Discord.RichEmbed()
       .setDescription("NEW WARN!")
@@ -51,8 +49,7 @@ bot.on("message", async message => {
       if(!warnChannel) return message.channel.send("Can't Find Channel");
       message.guild.member(wUser).warn(wReason).then(()=>{
         warnChannel.send(warnEmbed).then(()=>{
-    message.delete().catch();
-    message.channel.send(botmessage);
+        return message.channel();
 
   })
 })
