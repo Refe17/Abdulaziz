@@ -199,8 +199,8 @@ bot.on('message', message=>{
         .setTimestamp()
       bot.channels.get('517612714844225566').send(embedArgs)
     }
-
-
+  
+  }
   if (message.content.startsWith(prefix + "clear")) {
     message.delete();
   if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("**You cannot do this command**")
@@ -210,9 +210,6 @@ bot.on('message', message=>{
   
   })
 }
-}
-})
-})
 bot.on(`message`, message=>{
 
   if (message.content.startsWith(prefix + "bc")) {
@@ -228,4 +225,6 @@ bot.on(`message`, message=>{
   message.delete();
   }
 })
+})
+})  
 bot.login(process.env.BOT_TOKEN)
