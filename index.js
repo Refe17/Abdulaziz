@@ -53,7 +53,7 @@ bot.on("message", async message => {
     warnChannel.send(warnEmbed).then(()=>{
   return;
 
-  })
+})
  
      
 
@@ -73,7 +73,7 @@ bot.on("message", async message => {
         .setImage("https://cdn.discordapp.com/attachments/516552351788826626/516664472266342411/image0.png", 200, 200);
         return message.channel.send(animeEmbed); 
   }
-  
+
       if (cmd === `${prefix}porn`){
 
 
@@ -120,7 +120,7 @@ bot.on("message", async message => {
       .addField("Reason:", bReason);
 
 
-    let banChannel = message.guild.channels.find(x=> x.name === "ban-log");
+    let banChannel = bot.channels.get('517612704223985666').send(banEmbed)
     if(!banChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(bUser).ban(bReason).then(()=>{
       banChannel.send(banEmbed).then(()=>{
@@ -146,7 +146,7 @@ bot.on("message", async message => {
       .addField("Channel:", message.channel)
       .addField("Reason:", kReason);
 
-    let kickChannel = message.guild.channels.find(x=> x.name === "kick-log");
+    let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
     if(!kickChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(kUser).kick(kReason).then(()=>{
       kickChannel.send(kickEmbed).then(()=>{
@@ -241,7 +241,7 @@ bot.on('message', message=>{
         .setThumbnail(message.author.avatarURL)
         .setFooter('From **' + message.author.username + "#" + message.author.discriminator + ' (' + message.author.id + ')** ')
         .setTimestamp()
-      bot.channels.get('517272424316928010').send(embedArgs)
+      bot.channels.get('517612714844225566').send(embedArgs)
     }
   
 
