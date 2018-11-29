@@ -49,7 +49,7 @@ bot.on("message", async message => {
       .addField("Channel:", message.channel)
       .addField("Reason:", wReason);
 
-      let warnChannel = bot.channels.get('517611083616354306').send(warnEmbed)
+      let warnChannel = bot.channels.get('517612689565024257').send(warnEmbed)
       if(!warnChannel) return message.channel.send("Can't Find Channel");
         warnChannel.send(warnEmbed).then(()=>{
 return;
@@ -122,7 +122,7 @@ return;
       .addField("Reason:", bReason);
 
 
-    let banChannel = message.guild.channels.find(x=> x.name === "ban-log");
+    let banChannel = bot.channels.get('517612704223985666').send(banEmbed)
     if(!banChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(bUser).ban(bReason).then(()=>{
       banChannel.send(banEmbed).then(()=>{
@@ -148,7 +148,7 @@ return;
       .addField("Channel:", message.channel)
       .addField("Reason:", kReason);
 
-    let kickChannel = message.guild.channels.find(x=> x.name === "kick-log");
+    let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
     if(!kickChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(kUser).kick(kReason).then(()=>{
       kickChannel.send(kickEmbed).then(()=>{
@@ -243,7 +243,7 @@ bot.on('message', message=>{
         .setThumbnail(message.author.avatarURL)
         .setFooter('From **' + message.author.username + "#" + message.author.discriminator + ' (' + message.author.id + ')** ')
         .setTimestamp()
-      bot.channels.get('517272424316928010').send(embedArgs)
+      bot.channels.get('517612714844225566').send(embedArgs)
     }
   
 
