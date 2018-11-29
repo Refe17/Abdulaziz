@@ -32,7 +32,7 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args);
 
   if (message.content.startsWith(prefix + "warn")) {
-    if(!message.member.roles.find( r => r.name === '● Discord STAFF')) return message.channel.send('This require role: ● Discord STAFF')
+    if(!message.member.roles.find( r => r.name === '● Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
     let botmessage = args.join(" ");
     message.delete().catch();
     message.channel.send(botmessage);
