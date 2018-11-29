@@ -65,6 +65,7 @@ bot.on("message", async message => {
       .setDescription("NEW BAN!")
       .setColor("#96003e")
       .setTimestamp()
+      .addField("Server Name", message.guild.name)
       .addField("For:", `${bUser} ID: ${bUser.id}`)
       .addField("By:", `${message.author} ID: ${message.author.id}`)
       .addField("Channel:", message.channel)
@@ -73,9 +74,9 @@ bot.on("message", async message => {
 
     let banChannel = bot.channels.get('517612704223985666').send(banEmbed)
     if(!banChannel) return message.channel.send("Can't Find Channel");
-    message.guild.member(bUser).ban(bReason).then(()=>{
+    message.guild.member(bUser).ban(bReason).then(message.channel.send("**DONE!**")).then(()=>{
       banChannel.send(banEmbed).then(()=>{
-        return message.channel.send("**DONE!**")
+        return;
       })
     })
    }
@@ -91,13 +92,14 @@ bot.on("message", async message => {
       .setDescription("NEW KICK!")
       .setColor("#96003e")
       .setTimestamp()
+      .addField("Server Name", message.guild.name)
       .addField("For:", `${kUser} ID: ${kUser.id}`)
       .addField("By:", `${message.author} ID: ${message.author.id}`)
       .addField("Channel:", message.channel)
       .addField("Reason:", kReason);
     let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
     if(!kickChannel) return message.channel.send("**CANNOT FIND CHANNEL**")
-    message.guild.member(kUser).kick(kReason).then(message.channel.send("*BYE*")).then(()=>{
+    message.guild.member(kUser).kick(kReason).then(message.channel.send("**DONE!**")).then(()=>{
       kickChannel.send(kickEmbed).then(()=>{
       return;
     
@@ -142,6 +144,7 @@ bot.on("message", async message => {
     .setDescription("NEW WARN!")
     .setColor("#96003e")
     .setTimestamp()
+    .addField("Server Name", message.guild.name)
     .addField("For:", `${wUser} ID: ${wUser.id}`)
     .addField("By:", `${message.author} ID: ${message.author.id}`)
     .addField("Channel:", message.channel)
@@ -192,4 +195,26 @@ bot.on('message', message=>{
   }
 })
 
+const clean = text => {
+  if (typeof(text) === "string")
+    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+  else
+    return text;
+ }
+
+    bot.on("message", message => {
+      const args = message.content.split(" ").slice(1);
+      if (message.content.startsWith(prefix + "eval")) {
+        if (message.author.id != "284151161291014144") return;
+        try{
+          const code = args.join(" ");
+          let evaled = eval(code);
+          if (typeof evaled !== "string")
+          evaled = require("util").inspect(evaled);
+          message.channel.send(clean(evaled), {code:"xl"});
+        }catch (err){
+          message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+}
+      }
+    })
 bot.login(process.env.BOT_TOKEN)
