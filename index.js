@@ -87,8 +87,7 @@ bot.on("message", async message => {
     let kReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No m8 you can't do that");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No m8 you can't kick em");
-    let botmessage = args.join(" ");
-    message.channel.send(botmessage);
+
   
     let kickEmbed = new Discord.RichEmbed()
       .setDescription("NEW KICK!")
@@ -102,8 +101,9 @@ bot.on("message", async message => {
     let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
     if(!kickChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(kUser).kick(kReason).then(()=>{
-      kickChannel.send(kickEmbed).then(()=>{
-          return message.channel(botmessage).send("**DONE!**")
+      message.delete().catch(O_o=>{}).then(kickChannel.send(kickEmbed)).then(()=>{
+        return message.channel("**DONE!**")
+
       })
     })
  
