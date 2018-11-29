@@ -1,5 +1,4 @@
 const Discord = require ("discord.js");
-const prefix = `$`
 const bot = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 
@@ -180,7 +179,7 @@ bot.on("message", async message => {
     return;
       })
 
-
+    }
   
 
 
@@ -213,10 +212,10 @@ bot.on('message', message=>{
         .setTimestamp()
       bot.channels.get('517612714844225566').send(embedArgs)
     }
-
   }
 })
-     }
-    })
-  })
+})
+})
+    
+  
 bot.login(process.env.BOT_TOKEN)
