@@ -96,8 +96,7 @@ bot.on("message", async message => {
       .addField("Channel:", message.channel)
       .addField("Reason:", kReason);
     let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
-    if(!kickChannel) return message.channel.send("**CANNOT FIND CHANNEL**")
-    message.channel.send("BYE MOTHER BROTHER")
+    if(!kickChannel) return message.channel.send("**CANNOT FIND CHANNEL**").then(message.channel.send("**"))
     message.guild.member(kUser).kick(kReason).then(()=>{
       kickChannel.send(kickEmbed).then(()=>{
       return;
