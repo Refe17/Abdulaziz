@@ -31,6 +31,36 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
 
+  if (message.content.startsWith(prefix + "warn")) {
+    let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    let wReason = args.join(" ").slice(22);
+  if(!message.member.roles.find( r => r.name === 'Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
+  message.delete().catch();
+  let botmessage = args.join(" ");
+  message.channel.send(botmessage);
+
+  let warnEmbed = new Discord.RichEmbed()
+  .setDescription("NEW WARN!")
+  .setColor("#96003e")
+  .setTimestamp()
+  .addField("For:", `${wUser} ID: ${wUser.id}`)
+  .addField("By:", `${message.author} ID: ${message.author.id}`)
+  .addField("Channel:", message.channel)
+  .addField("Reason:", wReason);
+  
+  let warnChannel = bot.channels.get('517612689565024257').send(warnEmbed)
+  if(!warnChannel) return message.channel.send("Can't Find Channel");
+    warnChannel.send(warnEmbed).then(()=>{
+  return;
+
+  })
+ 
+     
+
+
+  
+  
+     
 
 
 
@@ -90,7 +120,7 @@ bot.on("message", async message => {
       .addField("Reason:", bReason);
 
 
-    let banChannel = bot.channels.get('517612704223985666').send(banEmbed)
+    let banChannel = message.guild.channels.find(x=> x.name === "ban-log");
     if(!banChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(bUser).ban(bReason).then(()=>{
       banChannel.send(banEmbed).then(()=>{
@@ -116,7 +146,7 @@ bot.on("message", async message => {
       .addField("Channel:", message.channel)
       .addField("Reason:", kReason);
 
-    let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
+    let kickChannel = message.guild.channels.find(x=> x.name === "kick-log");
     if(!kickChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(kUser).kick(kReason).then(()=>{
       kickChannel.send(kickEmbed).then(()=>{
@@ -146,46 +176,29 @@ bot.on("message", async message => {
       return message.channel.send(botEmbed); 
      }
     
+  
 
 
   
 
 
-     if (message.content.startsWith(prefix + "warn")) {
-      let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-      let wReason = args.join(" ").slice(22);
-    if(!message.member.roles.find( r => r.name === 'Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
-    message.delete().catch();
-    let botmessage = args.join(" ");
-    message.channel.send(botmessage);
-    
-    
-    
-    
+  
 
-    let warnEmbed = new Discord.RichEmbed()
-    .setDescription("NEW WARN!")
-    .setColor("#96003e")
-    .setTimestamp()
-    .addField("For:", `${wUser} ID: ${wUser.id}`)
-    .addField("By:", `${message.author} ID: ${message.author.id}`)
-    .addField("Channel:", message.channel)
-    .addField("Reason:", wReason);
-    
-    let warnChannel = bot.channels.get('517612689565024257').send(warnEmbed)
-    if(!warnChannel) return message.channel.send("Can't Find Channel");
-      warnChannel.send(warnEmbed).then(()=>{
-    return;
+
+
 
 
     
 
   
 
-      })
 
 
 
+
+
+
+    }
 
 
 
@@ -228,15 +241,12 @@ bot.on('message', message=>{
         .setThumbnail(message.author.avatarURL)
         .setFooter('From **' + message.author.username + "#" + message.author.discriminator + ' (' + message.author.id + ')** ')
         .setTimestamp()
-      bot.channels.get('517612714844225566').send(embedArgs)
+      bot.channels.get('517272424316928010').send(embedArgs)
     }
-
+  
 
   }
 })
-     }
-    })
-  })
-  
-
+})
+})
 bot.login(process.env.BOT_TOKEN)
