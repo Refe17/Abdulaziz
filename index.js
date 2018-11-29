@@ -49,7 +49,7 @@ bot.on("message", async message => {
       .addField("Channel:", message.channel)
       .addField("Reason:", wReason);
 
-      let warnChannel = message.guild.channels.find(x=> x.id === "517611083616354306");
+      let warnChannel = bot.channels.get('517611083616354306').send(warnEmbed)
       if(!warnChannel) return message.channel.send("Can't Find Channel");
         warnChannel.send(warnEmbed).then(()=>{
 return;
