@@ -80,15 +80,13 @@ bot.on("message", async message => {
     })
    }
   
-  if (cmd === `${prefix}kick`){
+   if (cmd === `${prefix}kick`){
     message.delete();
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!kUser) return message.channel.send("Please Mention a User")
     let kReason = args.join(" ").slice(22);
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No m8 you can't do that");
     if(kUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No m8 you can't kick em");
-
-  
     let kickEmbed = new Discord.RichEmbed()
       .setDescription("NEW KICK!")
       .setColor("#96003e")
@@ -97,22 +95,21 @@ bot.on("message", async message => {
       .addField("By:", `${message.author} ID: ${message.author.id}`)
       .addField("Channel:", message.channel)
       .addField("Reason:", kReason);
-
     let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
     if(!kickChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(kUser).kick(kReason).then(()=>{
       kickChannel.send(kickEmbed).then(()=>{
-        return message.reply("**فك يو**")
-
+        message.channel.send("**DONE!**")
       })
-    })
+    }) 
+  }
  
 
 
 
   
     
-  }
+  
 
     if (cmd === `${prefix}info`){
       let bicon = bot.user.displayAvatarURL;
