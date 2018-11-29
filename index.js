@@ -33,7 +33,7 @@ bot.on("message", async message => {
 
   if (message.content.startsWith(prefix + "warn")) {
     if (message.author.id != "284151161291014144") return;
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("No");
+    if(!message.member.hasRole.id("517576076407341056")) return message.reply("You Cannot warn STAFF Members");
     let botmessage = args.join(" ");
     message.delete().catch();
     message.channel.send(botmessage);
