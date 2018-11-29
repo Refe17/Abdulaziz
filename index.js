@@ -154,25 +154,44 @@ bot.on("message", async message => {
       return message.channel.send(botEmbed); 
      }
     
+     bot.on("message", message => {
+      const args = message.content.split(" ").slice(1);
+      if (message.content.startsWith(prefix + "clear")) {
+    if (message.author.id != "284151161291014144") return;
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You have no permission to do this command")
+    if(!args[0]) return message.channel.send("Specify a Number")
+    message.channel.bulkDelete(args[0]).then(()=> {
+      message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
+    })
+
+
+     if (cmd === `${prefix}warn`){
+      let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+      let wReason = args.join(" ").slice(22);
+    if(!message.member.roles.find( r => r.name === 'Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
+    message.delete().catch();
+    let botmessage = args.join(" ");
+    message.channel.send(botmessage);
+    
+    let warnEmbed = new Discord.RichEmbed()
+    .setDescription("NEW WARN!")
+    .setColor("#96003e")
+    .setTimestamp()
+    .addField("For:", `${wUser} ID: ${wUser.id}`)
+    .addField("By:", `${message.author} ID: ${message.author.id}`)
+    .addField("Channel:", message.channel)
+    .addField("Reason:", wReason);
+    
+    let warnChannel = bot.channels.get('517612689565024257').send(warnEmbed)
+    if(!warnChannel) return message.channel.send("Can't Find Channel");
+      warnChannel.send(warnEmbed).then(()=>{
+    return;
+      })
+
+
   
 
 
-
-
-  
-
-
-
-
-bot.on("message", message => {
-  const args = message.content.split(" ").slice(1);
-  if (message.content.startsWith(prefix + "clear")) {
-if (message.author.id != "284151161291014144") return;
-if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You have no permission to do this command")
-if(!args[0]) return message.channel.send("Specify a Number")
-message.channel.bulkDelete(args[0]).then(()=> {
-  message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
-})
 
 bot.on(`message`, message=>{
 
@@ -202,34 +221,13 @@ bot.on('message', message=>{
         .setTimestamp()
       bot.channels.get('517612714844225566').send(embedArgs)
     }
-    if (cmd === `${prefix}warn`){
-      let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-      let wReason = args.join(" ").slice(22);
-    if(!message.member.roles.find( r => r.name === 'Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
-    message.delete().catch();
-    let botmessage = args.join(" ");
-    message.channel.send(botmessage);
-    
-    let warnEmbed = new Discord.RichEmbed()
-    .setDescription("NEW WARN!")
-    .setColor("#96003e")
-    .setTimestamp()
-    .addField("For:", `${wUser} ID: ${wUser.id}`)
-    .addField("By:", `${message.author} ID: ${message.author.id}`)
-    .addField("Channel:", message.channel)
-    .addField("Reason:", wReason);
-    
-    let warnChannel = bot.channels.get('517612689565024257').send(warnEmbed)
-    if(!warnChannel) return message.channel.send("Can't Find Channel");
-      warnChannel.send(warnEmbed).then(()=>{
-    return;
-    
-    })
-  }
-}
-})
+
   }
 })
+     }
+    }
+  })
 })
 })
+
 bot.login(process.env.BOT_TOKEN)
