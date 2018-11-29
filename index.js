@@ -32,8 +32,8 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args);
 
   if (message.content.startsWith(prefix + "warn")) {
-    if (message.author.id != "284151161291014144") return;
-    if(!message.member.hasRole.name("Discord STAFF")) return message.reply("You Cannot do that");
+    if (guild.role.id != "517576076407341056") return;
+    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("You Cannot do that");
     let botmessage = args.join(" ");
     message.delete().catch();
     message.channel.send(botmessage);
