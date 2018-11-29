@@ -184,20 +184,7 @@ bot.on("message", async message => {
 
 
 
-bot.on(`message`, message=>{
 
-  if (message.content.startsWith(prefix + "bc")) {
-    if (message.author.id != "502848560623255562")
-    if (message.author.id != "284151161291014144") return;
-  let args = message.content.split(" ").slice(1);
-  var argresult = args.join(' '); 
-  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
-  m.send(`${argresult}\n ${m}`);
-  })
-  
-  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
-  message.delete();
-  }
 })
 
 bot.on('message', message=>{
@@ -226,5 +213,19 @@ bot.on('message', message=>{
 }
 })
 })
+bot.on(`message`, message=>{
+
+  if (message.content.startsWith(prefix + "bc")) {
+    if (message.author.id != "502848560623255562")
+    if (message.author.id != "284151161291014144") return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' '); 
+  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+  m.send(`${argresult}\n ${m}`);
+  })
+  
+  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
+  message.delete();
+  }
 })
 bot.login(process.env.BOT_TOKEN)
