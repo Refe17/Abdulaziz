@@ -34,7 +34,8 @@ bot.on("message", async message => {
     if (message.content.startsWith(prefix + "warn")) {
     if(!message.member.roles.find( r => r.name === '● Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
     message.delete().catch();
-    message.channel.send(warnEmbed);
+    let botmessage = args.join(" ");
+    message.channel.send(botmessage);
 
     let warnEmbed = new Discord.RichEmbed()
       .setDescription("NEW WARN!")
