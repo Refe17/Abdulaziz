@@ -197,7 +197,6 @@ bot.on("message", async message => {
 
     bot.on(`message`, message=>{
       if (message.content.startsWith(prefix + "bc")) {
-        if (message.author.id != "502848560623255562")
         if (message.author.id != "284151161291014144") return;
         let args = message.content.split(" ").slice(1);
         var argresult = args.join(' '); 
