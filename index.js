@@ -127,17 +127,13 @@ bot.on("message", async message => {
     let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
     if(!kickChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(kUser).kick(kReason).then(()=>{
-      kickChannel.send(kickEmbed).then(()=>{
-          return message.channel.send("**DONE!**")
+      message.channel.send("**DONE!**")
+      kickChannel.send(kickEmbed)
+      
       })
-    })
+    }
  
-
-
-
-  
-    
-  }
+  })
 
     if (cmd === `${prefix}info`){
       let bicon = bot.user.displayAvatarURL;
@@ -245,5 +241,5 @@ bot.on("message", async message => {
         }
       }
     })
-  })
+  
 bot.login(process.env.BOT_TOKEN)
