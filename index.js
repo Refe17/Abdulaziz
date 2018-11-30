@@ -1,9 +1,7 @@
 const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const prefix = "$"
-
 bot.commands = new Discord.Collection();
-
 
 bot.on(`ready`, ()=>{
   console.log(`${bot.user.username} is online!`);
@@ -179,7 +177,7 @@ bot.on("message", async message => {
       warnChannel.send(warnEmbed).then(()=>{
     return;
       })
-    
+
     if (message.content.startsWith(prefix + "clear")) {
       message.delete();
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("**You cannot do this command**")
@@ -210,8 +208,28 @@ bot.on("message", async message => {
     })
     
 
-
-
+    const clean = text => {
+      if (typeof(text) === "string")
+        return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+      else
+        return text;
+     }
+    
+        bot.on("message", message => {
+          const args = message.content.split(" ").slice(1);
+          if (message.content.startsWith(prefix + "eval")) {
+            if (message.author.id != "284151161291014144") return;
+            try{
+              const code = args.join(" ");
+              let evaled = eval(code);
+              if (typeof evaled !== "string")
+              evaled = require("util").inspect(evaled);
+              message.channel.send(clean(evaled), {code:"xl"});
+            }catch (err){
+              message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+    }
+          }
+        })
     bot.on('message', message=>{
       if(message.channel.name == undefined){
         if(!message.author.bot){
