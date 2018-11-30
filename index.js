@@ -208,7 +208,7 @@ bot.on('message', message=>{
     }
   
   }
-})
+
 
 bot.on(`message`, message=>{
 
@@ -224,6 +224,7 @@ bot.on(`message`, message=>{
   message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
   message.delete();
   }
+})
 })
 })
 bot.login(process.env.BOT_TOKEN)
