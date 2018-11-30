@@ -13,11 +13,7 @@ bot.on(`ready`, ()=>{
   console.log(`Logged in as ${bot.user.tag}!`);
   bot.user.setStatus("dnd")
   bot.user.setGame(`$bc | Vampires`, "https://www.twitch.tv/azoqzmj")
-
-
-
-
-
+})  
 
 bot.on("message", async message => {
   if (message.author.bot) return;
@@ -30,45 +26,22 @@ bot.on("message", async message => {
 
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
-
-
- 
-     
-
-
-  
-  
-     
-
-
-
   if (cmd === `${prefix}anime`){
-
-      let animeEmbed = new Discord.RichEmbed()
-        .setDescription("Anime")
-        .setTimestamp()
-        .setColor("#96003e")
-        .setImage("https://cdn.discordapp.com/attachments/516552351788826626/516664472266342411/image0.png", 200, 200);
-        return message.channel.send(animeEmbed); 
+    let animeEmbed = new Discord.RichEmbed()
+      .setDescription("Anime")
+      .setTimestamp()
+      .setColor("#96003e")
+      .setImage("https://cdn.discordapp.com/attachments/516552351788826626/516664472266342411/image0.png", 200, 200);
+      return message.channel.send(animeEmbed); 
   }
-
-      if (cmd === `${prefix}porn`){
-
-
-        let hubEmbed = new Discord.RichEmbed()
-          .setDescription("anime")
-          .setTimestamp()
-          .setColor("#96003e")
-          .setImage("https://cdn.discordapp.com/attachments/515180049163485226/516665368291442700/56.png", 200, 200);
-
-      
-
-
-
-      return message.channel.send(hubEmbed); 
+  if (cmd === `${prefix}porn`){
+    let hubEmbed = new Discord.RichEmbed()
+      .setDescription("anime")
+      .setTimestamp()
+      .setColor("#96003e")
+      .setImage("https://cdn.discordapp.com/attachments/515180049163485226/516665368291442700/56.png", 200, 200);
+    return message.channel.send(hubEmbed); 
   }
-
-
      if(cmd === `${prefix}help`) {
       let helpEmbed = new Discord.RichEmbed()
       .setDescription("Server Information - Thank you for using our bot")
@@ -124,18 +97,20 @@ bot.on("message", async message => {
       .addField("Channel:", message.channel)
       .addField("Reason:", kReason);
 
-      let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
-      if(!kickChannel) return message.channel.send("**CANNOT FIND CHANNEL**")
-      message.guild.member(kUser).kick(kReason).then(message.channel.send("**DONE!**")).then(()=>{
-      if(!kickChannel) return message.channel.send("Can't Find Channel");
-      message.guild.member(kUser).kick(kReason).then(()=>{
-        kickChannel.send(kickEmbed).then(()=>{
-        return;
-      
-        })
-      }) 
+    let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
+    if(!kickChannel) return message.channel.send("Can't Find Channel");
+    message.guild.member(kUser).kick(kReason).then(message.channel.send("**DONE!**")).then(()=>{
+      kickChannel.send(kickEmbed).then(()=>{
+          return;
+      })
     })
-      
+ 
+
+
+
+  
+    
+  }
 
     if (cmd === `${prefix}info`){
       let bicon = bot.user.displayAvatarURL;
@@ -151,8 +126,7 @@ bot.on("message", async message => {
   
       return message.channel.send(botEmbed); 
      }
-    }
-  })
+    
     
 
 
@@ -163,7 +137,7 @@ bot.on("message", async message => {
     message.delete().catch();
     let botmessage = args.join(" ");
     message.channel.send(botmessage);
-     
+    
     let warnEmbed = new Discord.RichEmbed()
     .setDescription("NEW WARN!")
     .setColor("#96003e")
@@ -179,47 +153,43 @@ bot.on("message", async message => {
     return;
       })
     }
-  })
-  if (cmd === `${prefix}clear`){
-      message.delete();
+  if (message.content.startsWith(prefix + "clear")) {
+    message.delete();
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("**You cannot do this command**")
     if(!args[0]) return message.channel.send("Specify a Number")
     message.channel.bulkDelete(args[0]).then(()=> {
       message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
-    })
+    });
   }
+})
 
-
-
-
-    bot.on(`message`, message=>{
-      if (message.content.startsWith(prefix + "bc")) {
-        if (message.author.id != "284151161291014144") return;
-        let args = message.content.split(" ").slice(1);
-        var argresult = args.join(' '); 
-        message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
-          m.send(`${argresult}\n ${m}`);
-        
-        message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
-        message.delete();
-      })
-    }
-  })
-
-    bot.on('message', message=>{
-      if(message.channel.name == undefined){
-        if(!message.author.bot){
-          let args = message.content.split(" ").slice(0).join(" ");
-          let embedArgs = new Discord.RichEmbed()
-            .setAuthor('I have received a new DM !')
-            .addField('message content:',"```" + args + "```")
-            .setThumbnail(message.author.avatarURL)
-            .setFooter('From **' + message.author.username + "#" + message.author.discriminator + ' (' + message.author.id + ')** ')
-            .setTimestamp()
-          bot.channels.get('517612714844225566').send(embedArgs)
-        }
-      }
+bot.on(`message`, message=>{
+  if (message.content.startsWith(prefix + "bc")) {
+    if (message.author.id != "502848560623255562")
+    if (message.author.id != "284151161291014144") return;
+    let args = message.content.split(" ").slice(1);
+    var argresult = args.join(' '); 
+    message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+      m.send(`${argresult}\n ${m}`);
     })
-  
+    message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
+    message.delete();
+  }
+})
+
+bot.on('message', message=>{
+  if(message.channel.name == undefined){
+    if(!message.author.bot){
+      let args = message.content.split(" ").slice(0).join(" ");
+      let embedArgs = new Discord.RichEmbed()
+        .setAuthor('I have received a new DM !')
+        .addField('message content:',"```" + args + "```")
+        .setThumbnail(message.author.avatarURL)
+        .setFooter('From **' + message.author.username + "#" + message.author.discriminator + ' (' + message.author.id + ')** ')
+        .setTimestamp()
+      bot.channels.get('517612714844225566').send(embedArgs)
+    }
+  }
+})
 
 bot.login(process.env.BOT_TOKEN)
