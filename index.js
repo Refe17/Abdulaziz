@@ -100,9 +100,9 @@ bot.on("message", async message => {
 
     let banChannel = bot.channels.get('517612704223985666').send(banEmbed)
     if(!banChannel) return message.channel.send("Can't Find Channel");
-    message.guild.member(bUser).ban(bReason).then(()=>{
+    message.guild.member(bUser).ban(bReason).then(message.channel.send("**DONE!**")).then(()=>{
       banChannel.send(banEmbed).then(()=>{
-        return message.channel.send("**DONE!**")
+        return;
       })
     })
    }
