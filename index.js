@@ -162,7 +162,7 @@ bot.on("message", async message => {
     message.delete().catch();
     let botmessage = args.join(" ");
     message.channel.send(botmessage);
-    
+     
     let warnEmbed = new Discord.RichEmbed()
     .setDescription("NEW WARN!")
     .setColor("#96003e")
@@ -177,7 +177,8 @@ bot.on("message", async message => {
       warnChannel.send(warnEmbed).then(()=>{
     return;
       })
-
+    }
+  }
     if (message.content.startsWith(prefix + "clear")) {
       message.delete();
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("**You cannot do this command**")
@@ -185,7 +186,8 @@ bot.on("message", async message => {
     message.channel.bulkDelete(args[0]).then(()=> {
       message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
     })
-  
+  }
+})
 
 
 
@@ -200,7 +202,8 @@ bot.on("message", async message => {
         message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
         message.delete();
       })
-    
+    }
+  })
 
     bot.on('message', message=>{
       if(message.channel.name == undefined){
@@ -216,11 +219,5 @@ bot.on("message", async message => {
         }
       }
     })
-  }
-})
-    }
-  }
-}
-})
-})
+  })  
 bot.login(process.env.BOT_TOKEN)
