@@ -226,6 +226,7 @@ if(message.content.split(' ')[0] == 'bc') {
           var bc = new Discord.RichEmbed()
           .addField('**● Server  :**', `** → ${message.guild.name}**`)  
 .addField('**● Sender  :**', `** → ${message.author.username}#${message.author.discriminator}**`)
+.addField(`**الرسالة**`)
            
   .setColor('#910511')
                .addField('ّ', args)
