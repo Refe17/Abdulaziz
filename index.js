@@ -1,5 +1,6 @@
 const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
+const prefix = "$"
 bot.commands = new Discord.Collection();
 
 bot.on(`ready`, ()=>{
@@ -194,37 +195,33 @@ bot.on("message", async message => {
      }
     })
 
-bot.on('message', message=>{
-  if(message.channel.name == undefined){
-    if(!message.author.bot){
-      let args = message.content.split(" ").slice(0).join(" ");
-      let embedArgs = new Discord.RichEmbed()
-        .setAuthor('I have received a new DM !')
-        .addField('message content:',"```" + args + "```")
-        .setThumbnail(message.author.avatarURL)
-        .setFooter('From **' + message.author.username + "#" + message.author.discriminator + ' (' + message.author.id + ')** ')
-        .setTimestamp()
-      bot.channels.get('517612714844225566').send(embedArgs)
-    }
-  
-  }
-
-
-bot.on(`message`, message=>{
-
-  if (message.content.startsWith(prefix + "bc")) {
-    if (message.author.id != "502848560623255562")
-    if (message.author.id != "284151161291014144") return;
-  let args = message.content.split(" ").slice(1);
-  var argresult = args.join(' '); 
-  message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
-  m.send(`${argresult}\n ${m}`);
+    bot.on(`message`, message=>{
+      if (message.content.startsWith(prefix + "bc")) {
+        if (message.author.id != "502848560623255562")
+        if (message.author.id != "284151161291014144") return;
+        let args = message.content.split(" ").slice(1);
+        var argresult = args.join(' '); 
+        message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+          m.send(`${argresult}\n ${m}`);
+        })
+        message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
+        message.delete();
+      }
+    })
+    
+    bot.on('message', message=>{
+      if(message.channel.name == undefined){
+        if(!message.author.bot){
+          let args = message.content.split(" ").slice(0).join(" ");
+          let embedArgs = new Discord.RichEmbed()
+            .setAuthor('I have received a new DM !')
+            .addField('message content:',"```" + args + "```")
+            .setThumbnail(message.author.avatarURL)
+            .setFooter('From **' + message.author.username + "#" + message.author.discriminator + ' (' + message.author.id + ')** ')
+            .setTimestamp()
+          bot.channels.get('517612714844225566').send(embedArgs)
+        }
+      }
+    })
   })
-  
-  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
-  message.delete();
-  }
-})
-})
-})
 bot.login(process.env.BOT_TOKEN)
