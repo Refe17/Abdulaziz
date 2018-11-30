@@ -1,6 +1,6 @@
 const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
-const prefix = "-"
+const prefix = "$"
 bot.commands = new Discord.Collection();
 
 bot.on(`ready`, ()=>{
