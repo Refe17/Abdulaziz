@@ -180,7 +180,7 @@ bot.on("message", async message => {
       })
     }
   })
-    if (message.content.startsWith(prefix + "clear")) {
+  if (cmd === `${prefix}clear`){
       message.delete();
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("**You cannot do this command**")
     if(!args[0]) return message.channel.send("Specify a Number")
