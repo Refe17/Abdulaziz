@@ -208,28 +208,8 @@ bot.on("message", async message => {
     })
     
 
-    const clean = text => {
-      if (typeof(text) === "string")
-        return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-      else
-        return text;
-     }
-    
-        bot.on("message", message => {
-          const args = message.content.split(" ").slice(1);
-          if (message.content.startsWith(prefix + "eval")) {
-            if (message.author.id != "284151161291014144") return;
-            try{
-              const code = args.join(" ");
-              let evaled = eval(code);
-              if (typeof evaled !== "string")
-              evaled = require("util").inspect(evaled);
-              message.channel.send(clean(evaled), {code:"xl"});
-            }catch (err){
-              message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
-    }
-          }
-        })
+
+
     bot.on('message', message=>{
       if(message.channel.name == undefined){
         if(!message.author.bot){
@@ -243,6 +223,28 @@ bot.on("message", async message => {
           bot.channels.get('517612714844225566').send(embedArgs)
         }
       }
-    })
-  })
+      const clean = text => {
+        if (typeof(text) === "string")
+          return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+        else
+          return text;
+       }
+      
+          bot.on("message", message => {
+            const args = message.content.split(" ").slice(1);
+            if (message.content.startsWith(prefix + "eval")) {
+              if (message.author.id != "284151161291014144") return;
+              try{
+                const code = args.join(" ");
+                let evaled = eval(code);
+                if (typeof evaled !== "string")
+                evaled = require("util").inspect(evaled);
+                message.channel.send(clean(evaled), {code:"xl"});
+              }catch (err){
+                message.channel.send(`\`ERROR\` \`\`\`xl\n${clean(err)}\n\`\`\``);
+              }
+            }
+          })
+        })
+      })
 bot.login(process.env.BOT_TOKEN)
