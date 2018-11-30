@@ -124,16 +124,18 @@ bot.on("message", async message => {
       .addField("Channel:", message.channel)
       .addField("Reason:", kReason);
 
-    let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
-    if(!kickChannel) return message.channel.send("Can't Find Channel");
-    message.guild.member(kUser).kick(kReason).then(()=>{
-      message.channel.send("**DONE!**")
-      kickChannel.send(kickEmbed)
+      let kickChannel = bot.channels.get('517612805608701952').send(kickEmbed)
+      if(!kickChannel) return message.channel.send("**CANNOT FIND CHANNEL**")
+      message.guild.member(kUser).kick(kReason).then(message.channel.send("**DONE!**")).then(()=>{
+      if(!kickChannel) return message.channel.send("Can't Find Channel");
+      message.guild.member(kUser).kick(kReason).then(()=>{
+        kickChannel.send(kickEmbed).then(()=>{
+        return;
       
-      })
-    }
- 
-  })
+        })
+      }) 
+    })
+      
 
     if (cmd === `${prefix}info`){
       let bicon = bot.user.displayAvatarURL;
@@ -189,7 +191,8 @@ bot.on("message", async message => {
 
 
      }
-    })
+    }
+  })
 
     bot.on(`message`, message=>{
       if (message.content.startsWith(prefix + "bc")) {
@@ -241,5 +244,5 @@ bot.on("message", async message => {
         }
       }
     })
-  
+  })
 bot.login(process.env.BOT_TOKEN)
