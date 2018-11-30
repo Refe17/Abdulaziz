@@ -151,9 +151,7 @@ bot.on("message", async message => {
   
       return message.channel.send(botEmbed); 
      }
-    }
 
-  })
     
 
 
@@ -180,7 +178,7 @@ bot.on("message", async message => {
     return;
       })
     }
-  })
+  }
     if (message.content.startsWith(prefix + "clear")) {
       message.delete();
     if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("**You cannot do this command**")
@@ -189,7 +187,7 @@ bot.on("message", async message => {
       message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
     })
   }
-
+})
 
 
 
@@ -221,4 +219,5 @@ bot.on("message", async message => {
         }
       }
     })
+  })
 bot.login(process.env.BOT_TOKEN)
