@@ -184,15 +184,10 @@ bot.on("message", async message => {
     if(!args[0]) return message.channel.send("Specify a Number")
     message.channel.bulkDelete(args[0]).then(()=> {
       message.channel.send(`Cleared ${args[0]} messages.`).then(msg => msg.delete(5000));
-    
     })
-  }
+  
 
 
-
-     }
-    }
-  })
 
     bot.on(`message`, message=>{
       if (message.content.startsWith(prefix + "bc")) {
@@ -201,11 +196,11 @@ bot.on("message", async message => {
         var argresult = args.join(' '); 
         message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
           m.send(`${argresult}\n ${m}`);
-        })
+        
         message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
         message.delete();
-      }
-    })
+      })
+    
 
     bot.on('message', message=>{
       if(message.channel.name == undefined){
@@ -221,5 +216,11 @@ bot.on("message", async message => {
         }
       }
     })
-  })
+  }
+})
+    }
+  }
+}
+})
+})
 bot.login(process.env.BOT_TOKEN)
