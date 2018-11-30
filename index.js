@@ -211,29 +211,23 @@ bot.on('message', message=>{
 
 
 
-bot.on('message', message => {
+  bot.on(`message`, message=>{
 
-  let args = message.content.split(' ').slice(1).join(' ');
-   if(!message.channel.guild) return;
-if(message.content.split(' ')[0] == 'bc') {
-       message.react("✔️")
-        let bcEmbed = new Discord.RichEmbed()
-  .setColor("#FF00FF")
-  .setThumbnail(message.author.avatarURL)   
-                                    .addField('تم الارسال بواسطة :', "<@" + message.author.id + ">")
-               message.channel.sendEmbed(bcEmbed);
-      message.guild.members.forEach(m => {
-          var bc = new Discord.RichEmbed()
-          .addField('**● Server  :**', `** → ${message.guild.name}**`)  
-.addField('**● Sender  :**', `** → ${message.author.username}#${message.author.discriminator}**`)
-.addField(`**الرسالة**`)
-           
-  .setColor('#910511')
-               .addField('ّ', args)
-          m.send(``,{bcEmbed: bc});
-      });
-  }
-})
+    if (message.content.startsWith(prefix + "bc")) {
+      if (message.author.id != "502848560623255562")
+      if (message.author.id != "284151161291014144") return;
+
+    let args = message.content.split(" ").slice(1);
+    var argresult = args.join(' '); 
+    message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+    m.send(`${argresult}\n ${m}`);
+    })
+    
+    message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
+    message.delete();
+    
+    }
+  })
 })
 })
 bot.login(process.env.BOT_TOKEN)
