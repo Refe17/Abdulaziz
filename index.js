@@ -58,7 +58,7 @@ bot.on("message", async message => {
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Please Mention a User")
     let bReason = args.join(" ").slice(22);
-    if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No m8 you can't do that");
+    if(!message.member.hasPermission("ADMINSTRATION")) return message.channel.send("No m8 you can't do that");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No m8 you can't kick em");
 
     let banEmbed = new Discord.RichEmbed()
@@ -131,7 +131,7 @@ bot.on("message", async message => {
 
 
      if (cmd === `${prefix}warn`){
-      if (message.author.id != "284151161291014144")
+      if (message.author.id != "284151161291014144") return;
       let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
       let wReason = args.join(" ").slice(22);
     message.delete().catch();
