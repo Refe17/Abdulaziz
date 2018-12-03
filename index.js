@@ -133,7 +133,7 @@ bot.on("message", async message => {
      if (cmd === `${prefix}warn`){
       let wUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
       let wReason = args.join(" ").slice(22);
-    if(!message.member.roles.find( r => r.name === '● Discord STAFF')) return message.channel.send('This Command requires Discord STAFF Role.')
+      if (message.author.id != "284151161291014144")
     message.delete().catch();
     let botmessage = args.join(" ");
     message.channel.send(botmessage);
