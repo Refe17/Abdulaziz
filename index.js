@@ -59,10 +59,10 @@ bot.on("message", async message => {
   }
   if (cmd === `${prefix}porn`){
     let hubEmbed = new Discord.RichEmbed()
-      .setDescription("anime")
+      .setDescription("Porn")
       .setTimestamp()
       .setColor("#96003e")
-      .setImage("https://cdn.discordapp.com/attachments/515180049163485226/516665368291442700/56.png", 200, 200);
+      .setImage("https://image.prntscr.com/image/tgIgtalKRYeAz_B9BGJAeg.png", 200, 200);
     return message.channel.send(hubEmbed); 
   }
      if(cmd === `${prefix}help`) {
