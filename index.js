@@ -246,9 +246,9 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
   var logchannel = bot.channels.get("519549974200188953")
   
   let logEmbed = new Discord.RichEmbed()
-  .setAuthor(oldMessage.author.tag, oldMessage.author.avatar)
+  .setDescription(oldMessage.author.tag, oldMessage.author.avatar)
   .setThumbnail(oldMessage.author.avatarURL)
-  .setDescription("Message Edited")
+  .setAuthor("Message Edited")
   .setColor("#96003e")
   .setTimestamp()
   .addField("Before", oldMessage.content, true)
