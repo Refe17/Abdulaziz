@@ -27,23 +27,8 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
 
-  bot.on("messageDelete", async message => {
 
-    if (oldMessage.content === newMessage.content){
-    
-    var logchannel = bot.channels.get("519451624650047500")
-    
-    let logEmbed = new Discord.RichEmbed()
-    .setDescription(oldMessage.author.tag, oldMessage.author.avatarURL)
-    .setColor("#96003e")
-    .setTimestamp()
-    .setDescription("Message Edited")
-    .addField("Before", oldMessage.content, true)
-    .addField("After", newMessage.content, true)
-    
-    logchannel.send(logEmbed);
-    }
-  })
+  
   
   if(cmd === `${prefix}rape`){
     message.delete();
@@ -252,4 +237,23 @@ bot.on("message", message => {
 }
   }
 })
+
+bot.on("messageDelete", async message => {
+
+  if (oldMessage.content === newMessage.content){
+  return;
+  }
+  var logchannel = bot.channels.get("519451624650047500")
+  
+  let logEmbed = new Discord.RichEmbed()
+  .setDescription(oldMessage.author.tag, oldMessage.author.avatarURL)
+  .setColor("#96003e")
+  .setTimestamp()
+  .setDescription("Message Edited")
+  .addField("Before", oldMessage.content, true)
+  .addField("After", newMessage.content, true)
+  
+  logchannel.send(logEmbed);
+})
+
 bot.login(process.env.BOT_TOKEN)
