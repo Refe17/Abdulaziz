@@ -26,6 +26,27 @@ bot.on("message", async message => {
 
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
+
+  if(cmd === `${prefix}rape`){
+    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+    if(!rUser) return message.channel.send("Please Mention a User")
+    let rReason = args.join(" ").slice(22);
+    if(!rReason) return message.channel.send("Please make a reason to annihilate the ass / pussy of this poor human")
+    let rapeEmbed = new Discord.RichEmbed()
+  .setDescription("POLICE IS COMING RUN")
+  .setColor("#96003e")
+  .setTitle("RAPE INCOMING")
+  .setTimestamp()
+  .setImage("https://image.prntscr.com/image/SBIU91x3SZWqo_VXRJRkrw.png")
+  .addField("You have succesfully raped", `${rUser}`)
+  .addField("RAPIST", `${message.author}`)
+  .addField("Reason:", rReason);
+  
+
+
+
+ return message.channel.send(rapeEmbed); 
+  }
   if (cmd === `${prefix}anime`){
     let animeEmbed = new Discord.RichEmbed()
       .setDescription("Anime")
