@@ -238,7 +238,7 @@ bot.on("message", message => {
   }
 })
 
-bot.on("messageDelete", async message => {
+bot.on("messageUpdate", async(oldMessage, newMessage) => {
 
   if (oldMessage.content === newMessage.content){
   return;
@@ -255,5 +255,6 @@ bot.on("messageDelete", async message => {
   
   logchannel.send(logEmbed);
 })
+
 
 bot.login(process.env.BOT_TOKEN)
