@@ -243,7 +243,7 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
   if (oldMessage.content === newMessage.content){
   return;
   }
-  var logchannel = bot.channels.get("519451624650047500")
+  var logchannel = bot.channels.get("519549974200188953")
   
   let logEmbed = new Discord.RichEmbed()
   .setDescription(oldMessage.author.tag, oldMessage.author.avatarURL)
