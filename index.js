@@ -28,6 +28,7 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args);
 
   if(cmd === `${prefix}rape`){
+    message.delete();
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Please Mention a User")
     let rReason = args.join(" ").slice(22);
@@ -46,6 +47,7 @@ bot.on("message", async message => {
 
 
  return message.channel.send(rapeEmbed); 
+
   }
   if (cmd === `${prefix}anime`){
     let animeEmbed = new Discord.RichEmbed()
