@@ -259,7 +259,7 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
 bot.on("messageDelete", async message => {
 
 
-  var deletechannel = bot.channels.get("519554608046145557")
+  var deletechannel = bot.channels.get("519558373964906506")
   
   let deleteEmbed = new Discord.RichEmbed()
   .setAuthor(message.author.tag, message.author.avatarURL)
