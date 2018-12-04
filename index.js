@@ -32,7 +32,7 @@ bot.on("message", async message => {
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!rUser) return message.channel.send("Please Mention a User")
     let rReason = args.join(" ").slice(22);
-    if(!rReason) return message.channel.send("What's The Reason :thinking: ?")
+    if(!rReason) return message.channel.send("What's The Reason :thinking:")
     let rapeEmbed = new Discord.RichEmbed()
   .setDescription("POLICE IS COMING RUN")
   .setColor("#96003e")
