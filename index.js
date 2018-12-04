@@ -256,6 +256,21 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
   
   logchannel.send(logEmbed);
 })
+bot.on("messageDelete", async message => {
 
+
+  var deletechannel = bot.channels.get("519554608046145557")
+  
+  let deleteEmbed = new Discord.RichEmbed()
+  .setAuthor(message.author.tag, message.author.avatarURL)
+  .setThumbnail(oldMessage.author.avatarURL)
+  .setColor("#96003e")
+  .setDescription(":wastebasket: Message Deleted")
+  .setTimestamp()
+  .addField("Before", oldMessage.content, true)
+  .addField("After", newMessage.content, true)
+  
+  deletechannel.send(deleteEmbed);
+})
 
 bot.login(process.env.BOT_TOKEN)
