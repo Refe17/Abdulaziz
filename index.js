@@ -246,10 +246,10 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
   var logchannel = bot.channels.get("519549974200188953")
   
   let logEmbed = new Discord.RichEmbed()
-  .setDescription(oldMessage.author.tag, oldMessage.author.avatar)
-  .setAuthor("Message Edited")
+  .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
   .setThumbnail(oldMessage.author.avatarURL)
   .setColor("#96003e")
+  .setDescription(":wastebasket: Message Deleted")
   .setTimestamp()
   .addField("Before", oldMessage.content, true)
   .addField("After", newMessage.content, true)
