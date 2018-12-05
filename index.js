@@ -115,6 +115,23 @@ let result = Math.floor((Math.random() * replies.length))
 
 message.channel.send(slapEmbed); 
 }
+if(cmd === `${prefix}fly`){
+
+  let flyUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!flyUser) return message.channel.send("Please Mention a User")
+
+let replies = ["https://cdn.discordapp.com/attachments/429271562772938755/519901058252931072/image0.gif",]
+let result = Math.floor((Math.random() * replies.length))
+
+  let flyEmbed = new Discord.RichEmbed()
+  .setColor("#96003e")
+  .setTimestamp()
+  .addField("i BELIEVE I CAN FLY", `${flyUser}`)
+  .setImage(replies[result])
+
+
+message.channel.send(flyEmbed); 
+}
 if(cmd === `${prefix}kill`){
 
   let killUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -126,14 +143,14 @@ let replies = ["https://cdn.discordapp.com/attachments/519617478700171314/519896
 "https://cdn.discordapp.com/attachments/519617478700171314/519896712026783748/KILL1.gif",]
 let result = Math.floor((Math.random() * replies.length))
 
-  let killEmbed = new Discord.RichEmbed()
+  let flyEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
   .addField(" :dagger::knife: :dagger:You have Killed :dagger::knife: :dagger: ", `${killUser}`)
   .setImage(replies[result])
 
 
-message.channel.send(killEmbed); 
+message.channel.send(flyEmbed); 
 
   }
   if (cmd === `${prefix}anime`){
