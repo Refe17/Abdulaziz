@@ -115,7 +115,7 @@ let result = Math.floor((Math.random() * replies.length))
 
 message.channel.send(slapEmbed); 
 }
-if(cmd === `${prefix}kiss`){
+if(cmd === `${prefix}kill`){
 
   let killUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!killUser) return message.channel.send("Please Mention a User")
