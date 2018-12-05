@@ -61,7 +61,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setColor("#96003e")
   .setTimestamp()
   .addField("You have Hugged", `${hUser}`)
-  .addField(" ", replies[result])
+  .setImage(replies[result])
 
 
 message.channel.send(hugEmbed); 
