@@ -124,7 +124,7 @@ let result = Math.floor((Math.random() * replies.length))
   let flyEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
-  .addField("i BELIEVE I CAN FLY", `${flyUser}`)
+  .addField("i BELIEVE I CAN FLY")
   .setImage(replies[result])
 
 
