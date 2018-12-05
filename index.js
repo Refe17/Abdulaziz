@@ -57,6 +57,7 @@ bot.on("message", async message => {
   .setColor("#96003e")
   .setTimestamp()
   .setImage("https://cdn.discordapp.com/attachments/515936545467924510/519860737296957450/hug.gif")
+  .setImage("https://cdn.discordapp.com/attachments/512896743655079946/519092315047067660/original_4.gif")
   .addField("You have Hugged", `${hUser}`)
 
 
