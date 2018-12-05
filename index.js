@@ -94,12 +94,15 @@ let result = Math.floor((Math.random() * replies.length))
 
 message.channel.send(kissEmbed); 
 }
-if(cmd === `${prefix}kiss`){
+if(cmd === `${prefix}slap`){
 
-  let kiUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if(!kiUser) return message.channel.send("Please Mention a User")
+  let sUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!sUser) return message.channel.send("Please Mention a User")
 
-let replies = ["http://s.orzzzz.com/news/95/19//574fcc092f554.gif",]
+let replies = ["https://cdn.discordapp.com/attachments/517612631155146766/519881444177477633/slap5.gif",
+"https://cdn.discordapp.com/attachments/517612631155146766/519881453975371776/SLAP3.gif",
+"https://cdn.discordapp.com/attachments/517612631155146766/519881459629031432/SLAP4.gif",
+"https://cdn.discordapp.com/attachments/517612631155146766/519881476372955137/SLAP2.gif",]
 let result = Math.floor((Math.random() * replies.length))
 
   let kissEmbed = new Discord.RichEmbed()
