@@ -93,6 +93,23 @@ let result = Math.floor((Math.random() * replies.length))
 
 
 message.channel.send(kissEmbed); 
+}
+if(cmd === `${prefix}kiss`){
+
+  let kiUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!kiUser) return message.channel.send("Please Mention a User")
+
+let replies = ["http://s.orzzzz.com/news/95/19//574fcc092f554.gif",]
+let result = Math.floor((Math.random() * replies.length))
+
+  let kissEmbed = new Discord.RichEmbed()
+  .setColor("#96003e")
+  .setTimestamp()
+  .addField("You have Kissed :kissing: ", `${kiUser}`)
+  .setImage(replies[result])
+
+
+message.channel.send(kissEmbed); 
 
   }
   if (cmd === `${prefix}anime`){
@@ -294,7 +311,7 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
   .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
   .setThumbnail(oldMessage.author.avatarURL)
   .setColor("#96003e")
-  .setDescription(":wastebasket: Message Deleted")
+  .setDescription("Message Edited :slight_smile: :thumbsup:")
   .setTimestamp()
   .addField("Before", oldMessage.content, true)
   .addField("After", newMessage.content, true)
@@ -304,7 +321,7 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
 bot.on("messageDelete", async message => {
 
 
-  var deletechannel = bot.channels.get("519554608046145557")
+  var deletechannel = bot.channels.get("519558373964906506")
   
   let deleteEmbed = new Discord.RichEmbed()
   .setAuthor(message.author.tag, message.author.avatarURL)
