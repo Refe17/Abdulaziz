@@ -71,7 +71,7 @@ let result = Math.floor((Math.random() * replies.length))
 
 
 message.channel.send(hugEmbed); 
-
+ }
 if(cmd === `${prefix}kiss`){
 
   let kiUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -80,13 +80,15 @@ if(cmd === `${prefix}kiss`){
 let replies = ["https://thumbs.gfycat.com/FondEvergreenIcterinewarbler-max-1mb.gif",
  "https://data.whicdn.com/images/71929912/original.gif", 
  "https://media1.tenor.com/images/9be36a386cabf6638f5c578989853b38/tenor.gif?itemid=12192867",
-"https://media1.tenor.com/images/15a068076a1e6d940e6d5777bed1547a/tenor.gif?itemid=12192869",]
+"https://media1.tenor.com/images/15a068076a1e6d940e6d5777bed1547a/tenor.gif?itemid=12192869",
+"https://25.media.tumblr.com/7b6fa44a9e507fd31b7783797421f6c4/tumblr_mvypcz3LeC1slr9goo1_500.gif",
+"http://s.orzzzz.com/news/95/19//574fcc092f554.gif"]
 let result = Math.floor((Math.random() * replies.length))
 
   let kissEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
-  .addField("You have Hugged", `${kiUser}`)
+  .addField("You have Kissed :kissing: ", `${kiUser}`)
   .setImage(replies[result])
 
 
