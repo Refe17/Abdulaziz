@@ -105,14 +105,14 @@ let replies = ["https://cdn.discordapp.com/attachments/517612631155146766/519881
 "https://cdn.discordapp.com/attachments/517612631155146766/519881476372955137/SLAP2.gif",]
 let result = Math.floor((Math.random() * replies.length))
 
-  let kissEmbed = new Discord.RichEmbed()
+  let slapEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
   .addField("You have Kissed :kissing: ", `${kiUser}`)
   .setImage(replies[result])
 
 
-message.channel.send(kissEmbed); 
+message.channel.send(slapEmbed); 
 
   }
   if (cmd === `${prefix}anime`){
