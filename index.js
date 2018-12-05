@@ -109,7 +109,7 @@ let result = Math.floor((Math.random() * replies.length))
   let slapEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
-  .setTitle("I BELIEVE I CAN FLY")
+  .addField("You have SLAPPED ", `${sUser}`)
   .setImage(replies[result])
 
 
@@ -124,7 +124,7 @@ let result = Math.floor((Math.random() * replies.length))
   let flyEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
-  .addField("i BELIEVE I CAN FLY")
+  .setTitle("i BELIEVE I CAN FLY")
   .setImage(replies[result])
 
 
