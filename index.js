@@ -48,6 +48,21 @@ bot.on("message", async message => {
 
 
  return message.channel.send(rapeEmbed); 
+  }
+ if(cmd === `${prefix}hug`){
+  message.delete();
+  let hUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!hUser) return message.channel.send("Please Mention a User")
+  let hugEmbed = new Discord.RichEmbed()
+  .setColor("#96003e")
+  .setTimestamp()
+  .setImage("https://cdn.discordapp.com/attachments/515936545467924510/519860737296957450/hug.gif")
+  .addField("You have Hugged", `${hUser}`)
+
+
+
+
+return message.channel.send(hugEmbed); 
 
   }
   if (cmd === `${prefix}anime`){
@@ -259,7 +274,7 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
 bot.on("messageDelete", async message => {
 
 
-  var deletechannel = bot.channels.get("519558373964906506")
+  var deletechannel = bot.channels.get("519554608046145557")
   
   let deleteEmbed = new Discord.RichEmbed()
   .setAuthor(message.author.tag, message.author.avatarURL)
