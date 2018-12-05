@@ -114,6 +114,26 @@ let result = Math.floor((Math.random() * replies.length))
 
 
 message.channel.send(slapEmbed); 
+}
+if(cmd === `${prefix}kiss`){
+
+  let killUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!killUser) return message.channel.send("Please Mention a User")
+
+let replies = ["https://cdn.discordapp.com/attachments/519617478700171314/519896710735200285/KILL4.gif",
+"https://cdn.discordapp.com/attachments/519617478700171314/519896704250806302/KILL3.gif",
+"https://cdn.discordapp.com/attachments/519617478700171314/519896707618570240/KILL2.gif",
+"https://cdn.discordapp.com/attachments/519617478700171314/519896712026783748/KILL1.gif",]
+let result = Math.floor((Math.random() * replies.length))
+
+  let killEmbed = new Discord.RichEmbed()
+  .setColor("#96003e")
+  .setTimestamp()
+  .addField("You have Killed :knife: :dagger: ", `${killUser}`)
+  .setImage(replies[result])
+
+
+message.channel.send(killEmbed); 
 
   }
   if (cmd === `${prefix}anime`){
