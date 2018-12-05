@@ -117,8 +117,6 @@ message.channel.send(slapEmbed);
 }
 if(cmd === `${prefix}fly`){
 
-  let flyUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-  if(!flyUser) return message.channel.send("Please Mention a User")
 
 let replies = ["https://cdn.discordapp.com/attachments/429271562772938755/519901058252931072/image0.gif",]
 let result = Math.floor((Math.random() * replies.length))
