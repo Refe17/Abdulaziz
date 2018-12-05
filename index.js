@@ -129,7 +129,7 @@ let result = Math.floor((Math.random() * replies.length))
   let killEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
-  .addField("You have Killed :knife: :dagger: ", `${killUser}`)
+  .addField(" :dagger::knife: :dagger:You have Killed :dagger::knife: :dagger: ", `${killUser}`)
   .setImage(replies[result])
 
 
