@@ -64,8 +64,7 @@ let result = Math.floor((Math.random() * replies.length))
   .addField(" ", replies[result])
 
 
-
-return message.channel.send(hugEmbed); 
+message.channel.send(hugEmbed); 
 
   }
   if (cmd === `${prefix}anime`){
