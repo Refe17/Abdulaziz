@@ -109,7 +109,7 @@ let result = Math.floor((Math.random() * replies.length))
   let slapEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
-  .addField("You have SLAPPED ", `${sUser}`)
+  .setTitle("I BELIEVE I CAN FLY")
   .setImage(replies[result])
 
 
