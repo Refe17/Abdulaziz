@@ -54,13 +54,14 @@ bot.on("message", async message => {
   let hUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
   if(!hUser) return message.channel.send("Please Mention a User")
 
-
+let replies = ["https://cdn.discordapp.com/attachments/512896743655079946/519092315047067660/original_4.gif", "https://cdn.discordapp.com/attachments/512896743655079946/519092315801911296/jc8lJMmdskGBqyo4018jsTKcKqg.gif", "https://cdn.discordapp.com/attachments/515936545467924510/519860737296957450/hug.gif"]
+let result = Math.floor((Math.random() * replies.length))
 
   let hugEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
-  .setImage("https://cdn.discordapp.com/attachments/515936545467924510/519860737296957450/hug.gif", "https://cdn.discordapp.com/attachments/512896743655079946/519092315801911296/jc8lJMmdskGBqyo4018jsTKcKqg.gif","https://cdn.discordapp.com/attachments/512896743655079946/519092315047067660/original_4.gif")
   .addField("You have Hugged", `${hUser}`)
+  .addField(" ", replies[result])
 
 
 
