@@ -29,7 +29,7 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
-    if (message.role.id != "520744682997940233")
+    if (guild.role.id != "520744682997940233")
     let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
@@ -51,7 +51,7 @@ return;
   }
   if(cmd === `${prefix}wrevoke`){
     message.delete();
-    if (message.role.id != "520744682997940233")
+    if (guild.role.id != "520744682997940233")
     let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
