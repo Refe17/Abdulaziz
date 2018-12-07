@@ -29,7 +29,8 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
-    if (message.role.id != "520744618698997760") return;
+    if (message.author.id != "340755335230914561")
+    if (!message.author.id != "340755335230914561") return message.channel.send("Only Cut Tweet Managers Can use this command")
     let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
@@ -51,7 +52,8 @@ return;
   }
   if(cmd === `${prefix}wrevoke`){
     message.delete();
-    if (message.role.id != "520744618698997760") return;
+    if (message.author.id != "340755335230914561")
+    if (!message.author.id != "340755335230914561") return message.channel.send("Only Cut Tweet Managers Can use this command")
     let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
