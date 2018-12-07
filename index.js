@@ -38,7 +38,7 @@ bot.on("message", async message => {
     .setColor("#96003e")
     .setTimestamp()
     .setImage("https://cdn.discordapp.com/attachments/464876757472903187/520399573169209344/tenor.gif")
-    .addField(`${message.author}`)
+    .setTitle(`${message.author}`)
     .addField("You have succesfully Fucked", `${fUser}`)
     .addField("Reason:", fReason);
     return message.channel.send(fuckEmbed); 
