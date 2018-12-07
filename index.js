@@ -46,7 +46,7 @@ bot.on("message", async message => {
     message.channel.send("**DONE**")
 
     let wEmbed = new Discord.RichEmbed()
-    .setDescription("NEW BAN!")
+    .setDescription("NEW Winner REVOKE!")
     .setColor("#96003e")
     .setTimestamp()
     .addField("For:", `${member} ID: ${member.id}`)
