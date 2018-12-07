@@ -35,9 +35,8 @@ bot.on("message", async message => {
     let fuckEmbed = new Discord.RichEmbed()
     .setColor("#96003e")
     .setTimestamp()
-    .setAuthor(message.author.tag, message.author.avatarURL)
+    .setDescription(`${message.author.tag}`, "You have Successfully Fucked"`${fUser}`)
     .setImage("https://cdn.discordapp.com/attachments/464876757472903187/520399573169209344/tenor.gif")
-    .addField("You have succesfully FUCKED", `${fUser}`)
     .setFooter("Vampires")
     return message.channel.send(fuckEmbed); 
   }
@@ -52,8 +51,8 @@ bot.on("message", async message => {
     .setColor("#96003e")
     .setTimestamp()
     .setImage("https://image.prntscr.com/image/SBIU91x3SZWqo_VXRJRkrw.png")
-    .addField("You have succesfully raped", `${rUser}`)
-    .addField("Rapist", `${message.author}`)
+    .addField(`${message.author.tag}`,"You have succesfully raped", `${rUser}`)
+    .addField("Rapist", `${message.author.tag}`)
     .addField("Reason:", rReason);
   
 
