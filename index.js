@@ -33,9 +33,9 @@ bot.on("message", async message => {
     let fUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!fUser) return message.channel.send("Please Mention a User")
     let fuckEmbed = new Discord.RichEmbed()
+    .setAuthor(message.author, "You have Successfully Fucked", message.fUser.tag)
     .setColor("#96003e")
     .setTimestamp()
-    .setDescription(message.author, `You have Successfully Fucked`, `${fUser.tag}`)
     .setImage("https://cdn.discordapp.com/attachments/464876757472903187/520399573169209344/tenor.gif")
     .setFooter("Vampires")
     return message.channel.send(fuckEmbed); 
