@@ -29,6 +29,7 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
+    if (message.role.id != "520744682997940233") return;
     let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
@@ -50,6 +51,7 @@ return;
   }
   if(cmd === `${prefix}wrevoke`){
     message.delete();
+    if (message.role.id != "520744682997940233") return;
     let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
@@ -63,7 +65,6 @@ return;
     .addField("For:", `${member} ID: ${member.id}`)
     .addField("By:", `${message.author} ID: ${message.author.id}`)
     .addField("Channel:", message.channel)
-
     let wChannel = bot.channels.get('520741211179581441').send(wEmbed)
     if(!wChannel) return message.channel.send("Can't Find Channel");
 return;
