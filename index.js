@@ -26,7 +26,15 @@ bot.on("message", async message => {
 
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
+  
+  if(cmd === `${prefix}wgive`){
+    let role = message.guild.roles.find(r => r.name === "Winner");
+    let member = message.mentions.members.first();
+    member.addRole(role).catch(console.error);
 
+
+
+  }
 
   if(cmd === `${prefix}fuck`){
     message.delete();
@@ -158,7 +166,7 @@ let replies = ["https://cdn.discordapp.com/attachments/519617478700171314/519896
 "https://cdn.discordapp.com/attachments/519617478700171314/519896712026783748/KILL1.gif",]
 let result = Math.floor((Math.random() * replies.length))
 
-  let flyEmbed = new Discord.RichEmbed()
+  let killEmbed = new Discord.RichEmbed()
   .setColor("#96003e")
   .setTimestamp()
   .setAuthor(message.author.tag, message.author.avatarURL)
@@ -166,7 +174,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setImage(replies[result])
 
 
-message.channel.send(flyEmbed); 
+message.channel.send(killEmbed); 
 
   }
   if (cmd === `${prefix}anime`){
