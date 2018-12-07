@@ -53,7 +53,7 @@ bot.on("message", async message => {
     .setTimestamp()
     .setAuthor(message.author.tag, message.author.avatarURL)
     .setImage("https://image.prntscr.com/image/SBIU91x3SZWqo_VXRJRkrw.png")
-    .addField(`${message.author.tag}`,"You have succesfully raped", `${rUser}`)
+    .addField("You have succesfully raped", `${rUser}`)
     .addField("Rapist", `${message.author.tag}`)
     .addField("Reason:", rReason);
   
