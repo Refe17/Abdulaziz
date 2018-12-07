@@ -37,6 +37,7 @@ bot.on("message", async message => {
     .setTimestamp()
     .setImage("https://cdn.discordapp.com/attachments/464876757472903187/520399573169209344/tenor.gif")
     .addField("You have succesfully FUCKED", `${fUser}`)
+    .setFooter("Vampires")
     return message.channel.send(fuckEmbed); 
   }
   
@@ -51,7 +52,7 @@ bot.on("message", async message => {
     .setTimestamp()
     .setImage("https://image.prntscr.com/image/SBIU91x3SZWqo_VXRJRkrw.png")
     .addField("You have succesfully raped", `${rUser}`)
-    .addField(" ", `${message.author}`)
+    .addField("Rapist", `${message.author}`)
     .addField("Reason:", rReason);
   
 
