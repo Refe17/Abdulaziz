@@ -35,6 +35,8 @@ bot.on("message", async message => {
     let fuckEmbed = new Discord.RichEmbed()
     .setColor("#96003e")
     .setTimestamp()
+    .setAuthor(message.author)
+    .seticonURL()
     .setImage("https://cdn.discordapp.com/attachments/464876757472903187/520399573169209344/tenor.gif")
     .addField("You have succesfully FUCKED", `${fUser}`)
     .setFooter("Vampires")
