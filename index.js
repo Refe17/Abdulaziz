@@ -32,15 +32,11 @@ bot.on("message", async message => {
     message.delete();
     let fUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!fUser) return message.channel.send("Please Mention a User")
-    let fReason = args.join(" ").slice(22);
-    if(!fReason) return message.channel.send("What's The Reason :thinking:")
     let fuckEmbed = new Discord.RichEmbed()
     .setColor("#96003e")
     .setTimestamp()
     .setImage("https://cdn.discordapp.com/attachments/464876757472903187/520399573169209344/tenor.gif")
-    .setDescription(`${message.author}`)
-    .addField("You have succesfully FUCKED", `${fUser}`)
-    .addField("Reason:", fReason);
+    .setDescription(`${message.author}`,"You have succesfully FUCKED", `${fUser}`)
     return message.channel.send(fuckEmbed); 
   }
   
