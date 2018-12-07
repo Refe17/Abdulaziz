@@ -30,8 +30,10 @@ bot.on("message", async message => {
   if(cmd === `${prefix}wgive`){
     let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
+    if(!member) return message.channel.send("Please Mention a User")
     member.addRole(role).catch(console.error);
 
+    return message.channel.send("**DONE**")
 
 
   }
