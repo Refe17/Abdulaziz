@@ -43,8 +43,19 @@ bot.on("message", async message => {
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
     member.removeRole(role).catch(console.error);
+    message.channel.send("**DONE**")
 
-    return message.channel.send("**DONE**")
+    let wEmbed = new Discord.RichEmbed()
+    .setDescription("NEW BAN!")
+    .setColor("#96003e")
+    .setTimestamp()
+    .addField("For:", `${member} ID: ${member.id}`)
+    .addField("By:", `${message.author} ID: ${message.author.id}`)
+    .addField("Channel:", message.channel)
+
+    let wChannel = bot.channels.get('520740031456083968').send(wEmbed)
+    if(!wChannel) return message.channel.send("Can't Find Channel");
+return;
   }
   if(cmd === `${prefix}fuck`){
     message.delete();
