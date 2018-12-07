@@ -28,6 +28,7 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args);
   
   if(cmd === `${prefix}wgive`){
+    message.delete();
     let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
@@ -35,9 +36,16 @@ bot.on("message", async message => {
 
     return message.channel.send("**DONE**")
 
-
   }
+  if(cmd === `${prefix}wrevoke`){
+    message.delete();
+    let role = message.guild.roles.find(r => r.name === "Winner");
+    let member = message.mentions.members.first();
+    if(!member) return message.channel.send("Please Mention a User")
+    member.removeRole(role).catch(console.error);
 
+    return message.channel.send("**DONE**")
+  }
   if(cmd === `${prefix}fuck`){
     message.delete();
     let fUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
