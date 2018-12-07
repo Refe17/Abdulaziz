@@ -36,7 +36,7 @@ bot.on("message", async message => {
     .setColor("#96003e")
     .setTimestamp()
     .setAuthor(message.author)
-    .setAvatar(message.author.iconURL)
+    .setAvatar(message.author.avatarURL)
     .setImage("https://cdn.discordapp.com/attachments/464876757472903187/520399573169209344/tenor.gif")
     .addField("You have succesfully FUCKED", `${fUser}`)
     .setFooter("Vampires")
