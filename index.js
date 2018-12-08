@@ -29,8 +29,8 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
-    if(message.member.roles.has(r => r.id === "520744618698997760"))
-   if(!member.member.roles) return message.channel.send(an8l3)
+    if(message.member.has(r => r.id === "520744618698997760"))
+   if(!member.member.has) return message.channel.send(an8l3)
     let role = message.guild.roles.find(r => r.id === "520737346321252377");
     if(!role) return message.channel.send("Couldn't Find This Role")
     let member = message.mentions.members.first();
