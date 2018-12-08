@@ -29,10 +29,8 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
-    if (message.author.id != "340755335230914561")
-    if (!message.author.id != "340755335230914561")
-    if (message.author.id != "284151161291014144")
-    if (!message.author.id != "284151161291014144") return message.channel.send("Only Cut Tweet Managers Can use this command")
+    if (message.author.id != "284151161291014144","340755335230914561")
+    if (!message.author.id != "284151161291014144","340755335230914561") return message.channel.send("Only Cut Tweet Managers Can use this command")
     let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
@@ -56,7 +54,7 @@ return;
     message.delete();
     if (message.author.id != "284151161291014144","340755335230914561")
     if (!message.author.id != "284151161291014144","340755335230914561") return message.channel.send("Only Cut Tweet Managers Can use this command")
-    let role = message.guild.roles.find(r => r.id === "520737346321252377");
+    let role = message.guild.roles.find(r => r.name === "Winner");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
     member.removeRole(role).catch(console.error);
