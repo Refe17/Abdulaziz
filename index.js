@@ -52,8 +52,8 @@ return;
   }
   if(cmd === `${prefix}wrevoke`){
     message.delete();
-    if (guild.role.id != "520744618698997760")
-    if (!guild.role.id != "520744618698997760") return message.channel.send("Only Cut Tweet Managers Can use this command")
+    if (author.role.id != "520744618698997760")
+    if (!author.role.id != "520744618698997760") return message.channel.send("Only Cut Tweet Managers Can use this command")
     let role = message.guild.roles.find(r => r.id === "520737346321252377");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
