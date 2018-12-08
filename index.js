@@ -29,13 +29,9 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
-    if (message.author.role.id != "520744618698997760")
-    if (!message.author.role.id) return message.channel.send("Only Cut Tweet Managers Can use this command")
-    if(message.member.roles.has(role.id)) {
-      console.log(`Yay, the author of the message has the role!`);
-    } else {
-      console.log(`Nope`);
-    }
+    if(message.member.roles.has(roleID))
+    let roleID = "520744618698997760";
+    if(!roleID) return message.channel.send("Couldn't Find This Role ok?")
     let role = message.guild.roles.find(r => r.id === "520737346321252377");
     if(!role) return message.channel.send("Couldn't Find This Role")
     let member = message.mentions.members.first();
