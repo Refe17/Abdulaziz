@@ -29,9 +29,9 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
+    let roleID = "520744618698997760";
     if(message.member.roles.has(roleID)) 
     if (!message.member.roles) return message.channel.send("Only Cut Tweet Managers Can use this command")
-    let roleID = "520744618698997760";
     let role = message.guild.roles.find(role => role.name === "Cut tweet Manager");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
