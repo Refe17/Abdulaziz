@@ -80,7 +80,7 @@ return;
     .setTimestamp()
     .setAuthor(message.author.tag, message.author.avatarURL)
     .setImage("https://cdn.discordapp.com/attachments/464876757472903187/520399573169209344/tenor.gif")
-    .addField("You have succesfully FUCKED", `${fUser}`)
+    .addField(`${message.author} You have succesfully FUCKED ${fUser}`)
     .setFooter("Vampires")
     return message.channel.send(fuckEmbed); 
   }
@@ -96,7 +96,7 @@ return;
     .setTimestamp()
     .setAuthor(message.author.tag, message.author.avatarURL)
     .setImage("https://image.prntscr.com/image/SBIU91x3SZWqo_VXRJRkrw.png")
-    .addField("You have succesfully raped", `${rUser}`)
+    .addField(`${message.author} You have succesfully raped ${rUser}`)
     .addField("Rapist", `${message.author.tag}`)
     .addField("Reason:", rReason);
   
@@ -123,7 +123,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setColor("#96003e")
   .setTimestamp()
   .setAuthor(message.author.tag, message.author.avatarURL)
-  .addField("You have Hugged", `${hUser}`)
+  .addField(`${message.author} You have Hugged ${hUser}`)
   .setImage(replies[result])
 
 
@@ -147,7 +147,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setColor("#96003e")
   .setTimestamp()
   .setAuthor(message.author.tag, message.author.avatarURL)
-  .addField("You have Kissed :kissing: ", `${kiUser}`)
+  .addField(`${message.author} You have Kissed :kissing: ${kiUser}`)
   .setImage(replies[result])
 
 
@@ -168,7 +168,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setColor("#96003e")
   .setTimestamp()
   .setAuthor(message.author.tag, message.author.avatarURL)
-  .addField("You have SLAPPED ", `${sUser}`)
+  .addField(`${message.author} You have SLAPPED ${sUser}`)
   .setImage(replies[result])
 
 
@@ -205,7 +205,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setColor("#96003e")
   .setTimestamp()
   .setAuthor(message.author.tag, message.author.avatarURL)
-  .addField(" :dagger::knife: :dagger:You have Killed :dagger::knife: :dagger: ", `${killUser}`)
+  .addField(`${message.author}:dagger::knife: :dagger:You have Killed :dagger::knife: :dagger: ${killUser}`)
   .setImage(replies[result])
 
 
