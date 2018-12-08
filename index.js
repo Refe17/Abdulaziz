@@ -80,7 +80,7 @@ return;
     .setTimestamp()
     .setAuthor(message.author.tag, message.author.avatarURL)
     .setImage("https://cdn.discordapp.com/attachments/464876757472903187/520399573169209344/tenor.gif")
-    .addField(`${message.author} You have succesfully FUCKED ${fUser}`)
+    .setDescription(`${message.author} You have succesfully FUCKED ${fUser}`)
     .setFooter("Vampires")
     return message.channel.send(fuckEmbed); 
   }
@@ -96,8 +96,7 @@ return;
     .setTimestamp()
     .setAuthor(message.author.tag, message.author.avatarURL)
     .setImage("https://image.prntscr.com/image/SBIU91x3SZWqo_VXRJRkrw.png")
-    .addField(`${message.author} You have succesfully raped ${rUser}`)
-    .addField("Rapist", `${message.author.tag}`)
+    .setDescription(`${message.author} You have succesfully raped ${rUser}`)
     .addField("Reason:", rReason);
   
 
@@ -123,7 +122,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setColor("#96003e")
   .setTimestamp()
   .setAuthor(message.author.tag, message.author.avatarURL)
-  .addField(`${message.author} You have Hugged ${hUser}`)
+  .setDescription(`${message.author} You have Hugged ${hUser}`)
   .setImage(replies[result])
 
 
@@ -147,7 +146,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setColor("#96003e")
   .setTimestamp()
   .setAuthor(message.author.tag, message.author.avatarURL)
-  .addField(`${message.author} You have Kissed :kissing: ${kiUser}`)
+  .setDescription(`${message.author} You have Kissed :kissing: ${kiUser}`)
   .setImage(replies[result])
 
 
@@ -168,7 +167,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setColor("#96003e")
   .setTimestamp()
   .setAuthor(message.author.tag, message.author.avatarURL)
-  .addField(`${message.author} You have SLAPPED ${sUser}`)
+  .setDescription(`${message.author} You have SLAPPED ${sUser}`)
   .setImage(replies[result])
 
 
@@ -205,7 +204,7 @@ let result = Math.floor((Math.random() * replies.length))
   .setColor("#96003e")
   .setTimestamp()
   .setAuthor(message.author.tag, message.author.avatarURL)
-  .addField(`${message.author}:dagger::knife: :dagger:You have Killed :dagger::knife: :dagger: ${killUser}`)
+  .setDescription(`${message.author}:dagger::knife: :dagger:You have Killed :dagger::knife: :dagger: ${killUser}`)
   .setImage(replies[result])
 
 
