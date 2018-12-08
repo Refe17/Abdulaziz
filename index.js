@@ -29,10 +29,9 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
-    let roleID = "520744618698997760";
-    if(message.member.roles.has(roleID)) 
-    if (!message.member.roles) return message.channel.send("Only Cut Tweet Managers Can use this command")
-    let role = message.guild.roles.find(role => role.name === "Cut tweet Manager");
+    if (message.author.role.id != "520744618698997760")
+    if (!message.member.role.id) return message.channel.send("Only Cut Tweet Managers Can use this command")
+    let role = message.guild.roles.find(r => r.id === "520737346321252377");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
     member.addRole(role).catch(console.error);
@@ -52,8 +51,8 @@ return;
   }
   if(cmd === `${prefix}wrevoke`){
     message.delete();
-    if (message.member.roles.has(520744618698997760))
-    if (!message.member.roles) return message.channel.send("Only Cut Tweet Managers Can use this command")
+    if (message.author.role.id != "520744618698997760")
+    if (!message.member.role.id) return message.channel.send("Only Cut Tweet Managers Can use this command")
     let role = message.guild.roles.find(r => r.id === "520737346321252377");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
