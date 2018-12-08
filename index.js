@@ -29,7 +29,7 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
-    if (message.role.name === "Cut tweet Manager ")
+    if (message.role.name === "Cut tweet Manager")
     if (!message.role.id) return message.channel.send("Only Cut Tweet Managers Can use this command")
     let role = message.guild.roles.find(r => r.id === "520737346321252377");
     let member = message.mentions.members.first();
@@ -51,7 +51,7 @@ return;
   }
   if(cmd === `${prefix}wrevoke`){
     message.delete();
-    if (message.role.name === "Cut tweet Manager ")
+    if (message.role.name === "Cut tweet Manager")
     if (!message.role.name) return message.channel.send("Only Cut Tweet Managers Can use this command")
     let role = message.guild.roles.find(r => r.id === "520737346321252377");
     let member = message.mentions.members.first();
