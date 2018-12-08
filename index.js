@@ -56,8 +56,8 @@ return;
     if (message.author.id != "340755335230914561")
     if (!message.author.id) return message.channel.send("Only Cut Tweet Managers Can use this command")
     let role = message.guild.roles.find(r => r.name === "Winner");
-    let rmember = message.mentions.members.first();
-    if(!rmember) return message.channel.send("Please Mention a User")
+    let member = message.mentions.members.first();
+    if(!member) return message.channel.send("Please Mention a User")
     member.removeRole(role).catch(console.error);
     message.channel.send("**DONE**")
 
@@ -65,7 +65,7 @@ return;
     .setDescription("NEW Winner REVOKE!")
     .setColor("#96003e")
     .setTimestamp()
-    .addField("For:", `${rmember} ID: ${rmember.id}`)
+    .addField("For:", `${member} ID: ${member.id}`)
     .addField("By:", `${message.author} ID: ${message.author.id}`)
     .addField("Channel:", message.channel)
     let wChannel = bot.channels.get('520741211179581441').send(wEmbed)
