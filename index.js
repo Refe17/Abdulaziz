@@ -33,7 +33,7 @@ bot.on("message", async message => {
     if (message.author.id != "515231975150452758")
     if (message.author.id != "340755335230914561")
     if (!message.author.id) return message.channel.send("Only Cut Tweet Managers Can use this command")
-    let role = message.guild.roles.find(r => r.id === "520737346321252377");
+    let role = message.guild.roles.find(r => r.id === "521645534428004362");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
     member.addRole(role).catch(console.error);
