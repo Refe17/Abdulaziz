@@ -29,14 +29,13 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
-    if (message.author.id != "284151161291014144")
-    if (message.author.id != "515231975150452758")
-    if (message.author.id != "340755335230914561")
-    if (!message.author.id) return message.channel.send("Only Cut Tweet Managers Can use this command")
-    let role = message.guild.roles.find(r => r.id === "521645534428004362");
+
+    let role = message.guild.roles.find(r => r.id === "521646839599071242");
+    if(!role) return message.channel.send("Only Cut Tweet Managers Can use this command")
+    let rrole = message.guild.roles.find(r => r.id === "521645534428004362");
     let member = message.mentions.members.first();
     if(!member) return message.channel.send("Please Mention a User")
-    member.addRole(role).catch(console.error);
+    member.addRole(rrole).catch(console.error);
     message.channel.send("**DONE**")
 
     let wgEmbed = new Discord.RichEmbed()
