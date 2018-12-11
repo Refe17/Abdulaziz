@@ -2,6 +2,7 @@ const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const prefix = "$"
 const yt = require('ytdl-core');
+const botconfig = require('./botconfig.json');
 bot.commands = new Discord.Collection();
 
 bot.on(`ready`, ()=>{
@@ -30,13 +31,17 @@ bot.on("message", async message => {
   
   if(cmd === `${prefix}wgive`){
     message.delete();
-    if (message.guild.roles != "521646839599071242")
-    if (!message.guild.roles) return message.channel.send("No")
-    let roleID = "521645534428004362";
-    let member = message.mentions.members.first();
-    if(!member) return message.channel.send("Please Mention a User")
-    member.addRole(roleID).catch(console.error);
-    message.channel.send("**DONE**")
+    let wRole = message.guild.roles.find("name", "CUT TWEET MANAGER")
+    if(message.member.roles.has(wRole.id)) {
+      let roleID = "521645534428004362";
+      let member = message.mentions.members.first();
+      if(!member) return message.channel.send("Please Mention a User")
+      member.addRole(roleID).catch(console.error);
+      message.channel.send("**DONE**")
+    }else
+    message.reply("You do not have the permission to do that.")
+
+
 
     let wgEmbed = new Discord.RichEmbed()
     .setDescription("NEW Winner Give!")
@@ -528,4 +533,5 @@ bot.on('message', msg => {
 	if (commands.hasOwnProperty(msg.content.toLowerCase().slice(prefix.length).split(' ')[0])) commands[msg.content.toLowerCase().slice(prefix.length).split(' ')[0]](msg);
 });
 
-bot.login(process.env.BOT_TOKEN)
+
+bot.login(botconfig.token)
