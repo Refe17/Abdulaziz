@@ -29,7 +29,7 @@ bot.on("message", async message => {
   msg = message.content.toLowerCase();
   cmd = message.content.toLowerCase();
 
-  if (msg.startsWith(prefix + "ask")) 
+  if (msg.startsWith(prefix + "ask")) {
     if(!args[2]) return message.reply("Ask a full question bitch")
     let replies = ["Yes", "No", "ask again later m8 i have no idea"]
     
