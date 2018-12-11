@@ -438,6 +438,20 @@ bot.on("messageDelete", async message => {
   deletechannel.send(deleteEmbed);
 })
 
+if(!args[2]) return message.reply("Ask a full question bitch")
+let replies = ["Yes", "No", "ask again later m8 i have no idea"]
+
+let result = Math.floor((Math.random() * replies.length));
+
+let question = args.slice(1).join(" ")
+
+let RandomEmbed = new Discord.RichEmbed()
+.setAuthor(message.author.tag)
+.setColor("#42ebf4")
+.addField("Question", question)
+.addField("Answer", replies[result])
+
+message.channel.send(RandomEmbed);
 
 
 
