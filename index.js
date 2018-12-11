@@ -27,6 +27,23 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
   
+  if (message.content.startsWith(prefix + "ask")) {
+    if(!args[2]) return message.reply("Ask a full question bitch")
+    let replies = ["Yes", "No", "ask again later m8 i have no idea"]
+    
+    let result = Math.floor((Math.random() * replies.length));
+    
+    let question = args.slice(1).join(" ")
+    
+    let RandomEmbed = new Discord.RichEmbed()
+    .setAuthor(message.author.tag)
+    .setColor("#42ebf4")
+    .addField("Question", question)
+    .addField("Answer", replies[result])
+    
+    message.channel.send(RandomEmbed);
+    }
+  
   if(cmd === `${prefix}wgive`){
     message.delete();
     let wRole = message.guild.roles.find("name", "CUT TWEET MANAGER")
@@ -437,22 +454,9 @@ bot.on("messageDelete", async message => {
   
   deletechannel.send(deleteEmbed);
 })
-if (cmd === `${prefix}ask`){
-if(!args[2]) return message.reply("Ask a full question bitch")
-let replies = ["Yes", "No", "ask again later m8 i have no idea"]
 
-let result = Math.floor((Math.random() * replies.length));
 
-let question = args.slice(1).join(" ")
 
-let RandomEmbed = new Discord.RichEmbed()
-.setAuthor(message.author.tag)
-.setColor("#42ebf4")
-.addField("Question", question)
-.addField("Answer", replies[result])
-
-message.channel.send(RandomEmbed);
-}
 
 
 
