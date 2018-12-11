@@ -26,7 +26,6 @@ bot.on("message", async message => {
 
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
-  msg = message.content.toLowerCase();
 
   if(cmd === `${prefix}fly`){
 
@@ -92,7 +91,23 @@ bot.on("message", async message => {
           
           message.channel.send(flyEmbed); 
           }
-
+  if (message.content.startsWith(prefix + "ask")) {
+    if(!args[2]) return message.reply("Ask a full question bitch")
+    let replies = ["Yes", "No"]
+    
+    let result = Math.floor((Math.random() * replies.length));
+    
+    let question = args.slice(0).join(" ")
+    
+    let RandomEmbed = new Discord.RichEmbed()
+    .setAuthor(message.author.tag)
+    .setColor("#42ebf4")
+    .addField("Question", question, true)
+    .addField("Answer", replies[result])
+    
+    message.channel.send(RandomEmbed);
+    }
+  
   if(cmd === `${prefix}wgive`){
     message.delete();
     let wRole = message.guild.roles.find("name", "CUT TWEET MANAGER")
