@@ -39,7 +39,7 @@ bot.on("message", async message => {
     .setAuthor(message.author.tag)
     .setColor("#42ebf4")
     .addField("Question", question, true)
-    .addField("Answer", replies[result], true)
+    .addField("Answer", replies[result])
     
     message.channel.send(RandomEmbed);
     }
@@ -454,6 +454,7 @@ bot.on("messageDelete", async message => {
   
   deletechannel.send(deleteEmbed);
 })
+
 
 
 
