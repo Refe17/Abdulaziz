@@ -27,25 +27,72 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
   msg = message.content.toLowerCase();
-  cmd = message.content.toLowerCase();
 
-  if (msg.startsWith(prefix + "ask")) {
-    if(!args[2]) return message.reply("Ask a full question bitch")
-    let replies = ["Yes", "No"]
+  if(cmd === `${prefix}fly`){
+
+
+    let replies = ["https://cdn.discordapp.com/attachments/429271562772938755/519901058252931072/image0.gif",]
+    let result = Math.floor((Math.random() * replies.length))
     
-    let result = Math.floor((Math.random() * replies.length));
+      let flyEmbed = new Discord.RichEmbed()
+      .setColor("#96003e")
+      .setTimestamp()
+      .setAuthor(message.author.tag, message.author.avatarURL)
+      .setTitle("i BELIEVE I CAN FLY")
+      .setImage(replies[result])
     
-    let question = args.slice(0).join(" ")
     
-    let RandomEmbed = new Discord.RichEmbed()
-    .setAuthor(message.author.tag)
-    .setColor("#42ebf4")
-    .addField("Question", question, true)
-    .addField("Answer", replies[result])
-    
-    message.channel.send(RandomEmbed);
+    message.channel.send(flyEmbed); 
     }
-  
+    if(cmd === `${prefix}fly`){
+
+
+      let replies = ["https://cdn.discordapp.com/attachments/429271562772938755/519901058252931072/image0.gif",]
+      let result = Math.floor((Math.random() * replies.length))
+      
+        let flyEmbed = new Discord.RichEmbed()
+        .setColor("#96003e")
+        .setTimestamp()
+        .setAuthor(message.author.tag, message.author.avatarURL)
+        .setTitle("i BELIEVE I CAN FLY")
+        .setImage(replies[result])
+      
+      
+      message.channel.send(flyEmbed); 
+      }
+      if(cmd === `${prefix}fly`){
+
+
+        let replies = ["https://cdn.discordapp.com/attachments/429271562772938755/519901058252931072/image0.gif",]
+        let result = Math.floor((Math.random() * replies.length))
+        
+          let flyEmbed = new Discord.RichEmbed()
+          .setColor("#96003e")
+          .setTimestamp()
+          .setAuthor(message.author.tag, message.author.avatarURL)
+          .setTitle("i BELIEVE I CAN FLY")
+          .setImage(replies[result])
+        
+        
+        message.channel.send(flyEmbed); 
+        }
+        if(cmd === `${prefix}fly`){
+
+
+          let replies = ["https://cdn.discordapp.com/attachments/429271562772938755/519901058252931072/image0.gif",]
+          let result = Math.floor((Math.random() * replies.length))
+          
+            let flyEmbed = new Discord.RichEmbed()
+            .setColor("#96003e")
+            .setTimestamp()
+            .setAuthor(message.author.tag, message.author.avatarURL)
+            .setTitle("i BELIEVE I CAN FLY")
+            .setImage(replies[result])
+          
+          
+          message.channel.send(flyEmbed); 
+          }
+
   if(cmd === `${prefix}wgive`){
     message.delete();
     let wRole = message.guild.roles.find("name", "CUT TWEET MANAGER")
@@ -198,22 +245,7 @@ let result = Math.floor((Math.random() * replies.length))
 message.channel.send(slapEmbed); 
 }
 
-    if(cmd === `${prefix}fly`){
 
-
-      let replies = ["https://cdn.discordapp.com/attachments/429271562772938755/519901058252931072/image0.gif",]
-      let result = Math.floor((Math.random() * replies.length))
-      
-        let flyEmbed = new Discord.RichEmbed()
-        .setColor("#96003e")
-        .setTimestamp()
-        .setAuthor(message.author.tag, message.author.avatarURL)
-        .setTitle("i BELIEVE I CAN FLY")
-        .setImage(replies[result])
-      
-      
-      message.channel.send(flyEmbed); 
-      }
 if(cmd === `${prefix}kill`){
 
   let killUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
