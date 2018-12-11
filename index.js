@@ -229,6 +229,38 @@ if(cmd === `${prefix}fly`){
   
   message.channel.send(flyEmbed); 
   }
+  if(cmd === `${prefix}fly`){
+
+
+    let replies = ["https://cdn.discordapp.com/attachments/429271562772938755/519901058252931072/image0.gif",]
+    let result = Math.floor((Math.random() * replies.length))
+    
+      let flyEmbed = new Discord.RichEmbed()
+      .setColor("#96003e")
+      .setTimestamp()
+      .setAuthor(message.author.tag, message.author.avatarURL)
+      .setTitle("i BELIEVE I CAN FLY")
+      .setImage(replies[result])
+    
+    
+    message.channel.send(flyEmbed); 
+    }
+    if(cmd === `${prefix}fly`){
+
+
+      let replies = ["https://cdn.discordapp.com/attachments/429271562772938755/519901058252931072/image0.gif",]
+      let result = Math.floor((Math.random() * replies.length))
+      
+        let flyEmbed = new Discord.RichEmbed()
+        .setColor("#96003e")
+        .setTimestamp()
+        .setAuthor(message.author.tag, message.author.avatarURL)
+        .setTitle("i BELIEVE I CAN FLY")
+        .setImage(replies[result])
+      
+      
+      message.channel.send(flyEmbed); 
+      }
 if(cmd === `${prefix}kill`){
 
   let killUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
