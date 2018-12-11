@@ -31,7 +31,7 @@ bot.on("message", async message => {
 
   if (msg.startsWith(prefix + "ask")) {
     if(!args[2]) return message.reply("Ask a full question bitch")
-    let replies = ["Yes", "No", "ask again later m8 i have no idea"]
+    let replies = ["Yes", "No"]
     
     let result = Math.floor((Math.random() * replies.length));
     
@@ -504,6 +504,7 @@ bot.on("messageDelete", async message => {
   
   deletechannel.send(deleteEmbed);
 })
+
 
 
 
