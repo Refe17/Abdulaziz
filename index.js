@@ -437,7 +437,7 @@ bot.on("messageDelete", async message => {
   
   deletechannel.send(deleteEmbed);
 })
-
+if (cmd === `${prefix}ask`){
 if(!args[2]) return message.reply("Ask a full question bitch")
 let replies = ["Yes", "No", "ask again later m8 i have no idea"]
 
@@ -452,6 +452,7 @@ let RandomEmbed = new Discord.RichEmbed()
 .addField("Answer", replies[result])
 
 message.channel.send(RandomEmbed);
+}
 
 
 
