@@ -26,8 +26,10 @@ bot.on("message", async message => {
 
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
+  msg = message.content.toLowerCase();
+  cmd = message.content.toLowerCase();
 
-  if (message.content.startsWith(prefix + "ask")) {
+  if (msg.startsWith(prefix + "ask")) 
     if(!args[2]) return message.reply("Ask a full question bitch")
     let replies = ["Yes", "No", "ask again later m8 i have no idea"]
     
