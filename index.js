@@ -33,7 +33,7 @@ bot.on("message", async message => {
     
     let result = Math.floor((Math.random() * replies.length));
     
-    let question = args.slice(1).join("")
+    let question = args.slice(0).join(" ")
     
     let RandomEmbed = new Discord.RichEmbed()
     .setAuthor(message.author.tag)
@@ -454,7 +454,6 @@ bot.on("messageDelete", async message => {
   
   deletechannel.send(deleteEmbed);
 })
-
 
 
 
