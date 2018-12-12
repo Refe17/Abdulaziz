@@ -1,6 +1,7 @@
 const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const prefix = "$"
+const ms = require ("ms");
 bot.commands = new Discord.Collection();
 
 bot.on(`ready`, ()=>{
@@ -363,7 +364,67 @@ message.channel.send(killEmbed);
     })
  
 
-
+    if(cmd === `${prefix}mute`){
+      let mRole = message.guild.roles.find("name", "Discord STAFF")
+      if(message.member.roles.has(mRole.id)) {
+      }else
+      message.reply("You do not have the permission to do that.")
+  let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!mUser) return message.reply("Couldn't Find User")
+  
+  let muterole = message.guild.roles.find('name', "Muted");
+  if(!muterole){
+      try{
+  muterole = await message.guild.createRole({
+      name: "Muted",
+      color: "#000000",
+      permissions:[],
+  })
+  message.guild.channels.forEach(async (channel) => {
+      await channel.overwritePermissions(muterole, {
+          SEND_MESSAGES: false,
+          ADD_REACTIONS: false
+      });
+  });
+      }catch(e){
+          console.log(e.stack);
+      }
+  }
+  let mutetime = args[1];
+  if(!mutetime) return message.reply("Please specify a Time")
+  let mReason = args.slice(2).join(" ")
+  if(!mReason) return message.reply("Please Specify a Reason")
+  
+  
+  await(mUser.addRole(muterole.id));
+  message.reply(`<@${mUser.id}> has been muted for ${ms(ms(mutetime))}`);
+  
+  setTimeout(function(){
+      mUser.removeRole(muterole.id)
+      let hiChannel = bot.channels.get('522277600463159326')
+      hiChannel.send(`<@${mUser.id}> has been unmuted!`)
+  }, ms(mutetime));
+  let muteEmbed = new Discord.RichEmbed()
+  .setDescription("NEW MUTE!")
+  .setColor("#96003e")
+  .setFooter("UAE")
+  .setTimestamp()
+  .addField("For:", `${mUser} ID: ${mUser.id}`)
+  .addField("By:", `${message.author} ID: ${message.author.id}`)
+  .addField("Channel:", message.channel)
+  .addField("Duration", mutetime)
+  .addField("Reason:", mReason);
+  
+  
+  
+  let muteChannel = bot.channels.get('522277401724583967').send(muteEmbed)
+  if(!muteChannel) return message.channel.send("Can't Find Channel");
+  muteChannel.send(muteEmbed).then(()=>{
+  
+      return;
+      
+  })
+    }
 
   
     
