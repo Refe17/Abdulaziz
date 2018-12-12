@@ -31,8 +31,9 @@ bot.on("message", async message => {
   if(cmd === `${prefix}mute`){
     let mRole = message.guild.roles.find("name", "Discord STAFF")
     if(message.member.roles.has(mRole.id)) {
-    }else
-    message.reply("You do not have the permission to do that.")
+    }else 
+    return message.reply("You do not have the permission to do that.")
+  
 let mUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
 if(!mUser) return message.reply("Couldn't Find User")
 
@@ -567,8 +568,6 @@ bot.on("messageDelete", async message => {
   
   deletechannel.send(deleteEmbed);
 })
-
-
 
 
 
