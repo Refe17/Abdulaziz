@@ -5,21 +5,6 @@ const ms = require ("ms");
 bot.commands = new Discord.Collection();
 
 
-var mysql = require('mysql')
-var connection = mysql.createConnection({
-
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'clearDB'
-});
-connection.connect(function(error){
-  if(!!error){
-    console.log('Error')
-  }else{
-    console.log('Connected')
-  }
-})
 bot.on(`ready`, ()=>{
   console.log(`${bot.user.username} is online!`);
   console.log(`----------------`);
