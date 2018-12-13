@@ -4,6 +4,22 @@ const prefix = "$"
 const ms = require ("ms");
 bot.commands = new Discord.Collection();
 
+
+var mysql = require('mysql')
+var connection = mysql.createConnection({
+
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'clearDB'
+});
+connection.connect(function(error){
+  if(!!error){
+    console.log('Error')
+  }else{
+    console.log('Connected')
+  }
+})
 bot.on(`ready`, ()=>{
   console.log(`${bot.user.username} is online!`);
   console.log(`----------------`);
@@ -28,6 +44,25 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args);
 
+
+if (message.content.startsWith(prefix + "hi")) {
+  let argss = message.content.split(" ").slice(1).join(" ");
+    let hiEmbed = new Discord.RichEmbed()
+    .setAuthor(message.author.tag, message.author.avatarURL)
+    .setThumbnail(message.author.avatarURL)
+    .setColor("RED")
+    .setTimestamp()
+    .setFooter("Vampires")
+    .addField("من سيرفر", message.guild.name, true)
+    .addField ("المرسل", message.author.tag, true)
+    .addField('محتوى الرسالة.',"" + argss + "")
+    
+    message.channel.send(hiEmbed);
+    
+    
+    }
+    
+    
   if(cmd === `${prefix}mute`){
     let mRole = message.guild.roles.find("name", "Discord STAFF")
     if(message.member.roles.has(mRole.id)) {
@@ -184,7 +219,7 @@ muteChannel.send(muteEmbed).then(()=>{
     }else
     message.reply("You do not have the permission to do that.")
 
-
+  
 
     let wgEmbed = new Discord.RichEmbed()
     .setDescription("NEW Winner Give!")
@@ -248,7 +283,6 @@ return;
     .setImage("https://image.prntscr.com/image/SBIU91x3SZWqo_VXRJRkrw.png")
     .setDescription(`${message.author} You have succesfully raped ${rUser}`)
     .addField("Reason:", rReason);
-  
 
 
 
@@ -484,20 +518,31 @@ message.channel.send(killEmbed);
   }
 })
 
-
 bot.on(`message`, message=>{
   if (message.content.startsWith(prefix + "bc")) {
     if (message.author.id != "502848560623255562")
     if (message.author.id != "284151161291014144") return;
     let args = message.content.split(" ").slice(1);
     var argresult = args.join(' '); 
+        let hiEmbed = new Discord.RichEmbed()
+        .setAuthor(message.author.tag, message.author.avatarURL)
+        .setThumbnail(message.author.avatarURL)
+        .setColor("RED")
+        .setTimestamp()
+        .setFooter("Vampires")
+        .addField("من سيرفر", message.guild.name, true)
+        .addField ("المرسل", message.author.tag, true)
+        .addField('محتوى الرسالة.',"" + argresult + "")
+        
+        
     message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
-      m.send(`${argresult}\n ${m}`);
+      m.send(hiEmbed);
     })
     message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`)
     message.delete();
   }
 })
+
 
 bot.on('message', message=>{
   if(message.channel.name == undefined){
@@ -568,6 +613,9 @@ bot.on("messageDelete", async message => {
   
   deletechannel.send(deleteEmbed);
 })
+
+
+
 
 
 
