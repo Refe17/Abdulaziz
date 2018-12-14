@@ -53,14 +53,14 @@ bot.on("message", async message => {
   if(commandfile) commandfile.run(bot,message,args,ops);
 
   bot.on('message', async msg => {
-  if (msg.author.id === midi || msg.author.id === "284151161291014144" || msg.member.roles.some(r => ["Logan DJ", "The Music Meister"].includes(r.name))) {
-    if (!msg.content.startsWith(config.prefix)) return undefined;
+  if (msg.author.id === "284151161291014144" || msg.member.roles.some(r => ["Discord STAFF", "Vampires"].includes(r.name))) {
+    if (!msg.content.startsWith(prefix)) return undefined;
     const args = msg.content.split(' ');
     const searchString = args.slice(1).join(' ');
     var url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : '';
     const serverQueue = queue.get(msg.guild.id);
     let command = msg.content.toLowerCase().split(' ')[0];
-    command = command.slice(config.prefix.length)
+    command = command.slice(prefix.length)
     if (command === 'play') {
         const voiceChannel = msg.member.voiceChannel;
         if (!voiceChannel) return msg.channel.send('I\'m sorry but you need to be in a voice channel to play music!');
