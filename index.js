@@ -2,7 +2,6 @@ const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const prefix = "$"
 const ms = require ("ms");
-const botconfig = require('./botconfig.json');
 const ytdl = require ('ytdl-core')
 const fs = require ("fs");
 const active = new Map()
@@ -67,7 +66,7 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args,ops);
 
-  if(cmd === "play") {
+  if(cmd === `${prefix}play`){
     if (!message.member.voiceChannel) return message.channel.send(':no_entry_sign: Please join a voice channel.');
     if (message.guild.me.voiceChannel) return message.channel.send(':no_entry_sign: Error, the bot is already connected to another music channel or a song is playing.');
     if (!args[0]) return message.channel.send(':no_entry_sign: Error, please enter a **URL** following the command.');
@@ -659,4 +658,4 @@ bot.on("messageDelete", async message => {
   deletechannel.send(deleteEmbed);
 })
 
-
+bot.login(process.env.BOT_TOKEN)
