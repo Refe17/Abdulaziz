@@ -2,9 +2,47 @@ const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const prefix = "$"
 const ms = require ("ms");
+const botconfig = require('./botconfig.json');
+const ytdl = require ('ytdl-core')
+const fs = require ("fs");
+const active = new Map()
+const ownerID = "284151161291014144"
 bot.commands = new Discord.Collection();
 
+fs.readdir("./commands/", (err, files)=>{
+    if(err) console.log(err);
 
+    let jsfile = files.filter(f => f.split(".").pop() === "js")
+if(jsfile.length <= 0){
+    console.log("couldn't find commands,")
+    return;
+}
+
+jsfile.forEach((f,i) =>{
+    let props = require(`./commands/${f}`);
+    console.log(`${f} loaded!`)
+    bot.commands.set(props.help.name, props);
+})
+})
+let ops = {
+    ownerID: ownerID,
+    active: active
+}
+var mysql = require('mysql')
+var connection = mysql.createConnection({
+
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'clearDB'
+});
+connection.connect(function(error){
+  if(!!error){
+    console.log('Error')
+  }else{
+    console.log('Connected')
+  }
+})
 bot.on(`ready`, ()=>{
   console.log(`${bot.user.username} is online!`);
   console.log(`----------------`);
@@ -27,8 +65,30 @@ bot.on("message", async message => {
   let args = messageArray.slice(1);
 
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
-  if(commandfile) commandfile.run(bot,message,args);
+  if(commandfile) commandfile.run(bot,message,args,ops);
 
+  if(cmd === "play") {
+    if (!message.member.voiceChannel) return message.channel.send(':no_entry_sign: Please join a voice channel.');
+    if (message.guild.me.voiceChannel) return message.channel.send(':no_entry_sign: Error, the bot is already connected to another music channel or a song is playing.');
+    if (!args[0]) return message.channel.send(':no_entry_sign: Error, please enter a **URL** following the command.');
+
+    let validate = await ytdl.validateURL(args[0]);
+   
+    if (!validate) return message.channel.send(':no_entry_sign: Error, please input a __valid__ url following the command.');
+
+    let info = await ytdl.getInfo(args[0]);
+   
+    let connection = await message.member.voiceChannel.join();
+    let dispatcher = await connection.playStream(ytdl(args[0], {
+        filter: 'audioonly'
+    }));
+
+    let playembed = new Discord.RichEmbed()
+    .setTitle("Now playing")
+    .setDescription(`${info.title}`)
+    
+    message.channel.send(playembed);
+}
 
 if (message.content.startsWith(prefix + "hi")) {
   let argss = message.content.split(" ").slice(1).join(" ");
@@ -600,8 +660,3 @@ bot.on("messageDelete", async message => {
 })
 
 
-
-
-
-
-bot.login(process.env.BOT_TOKEN)
