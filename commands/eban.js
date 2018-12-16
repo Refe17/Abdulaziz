@@ -1,6 +1,6 @@
+const Discord = require("discord.js");
 const moment = require('moment');
 const ms = require("ms");
-let now = moment();
 const fs = require("fs")
 const bantimer = JSON.parse(fs.readFileSync("./timer/bantimer.json", "utf8"));
 const banlist = JSON.parse(fs.readFileSync("./banlist.json", "utf8"));
@@ -8,8 +8,10 @@ const banlist = JSON.parse(fs.readFileSync("./banlist.json", "utf8"));
 
 module.exports.run = async (bot, msg, args, custom_functions) => {
     msg.delete();
+
     let tagged = msg.guild.member(msg.mentions.users.first() || args[1]);
     let i = parseInt(args[2], 10)
+
     if(!tagged) return msg.reply(`الرجاء تحديد الشخص`).then(msg=>{
         msg.delete(ms(`2 seconds`));
     })
@@ -46,15 +48,13 @@ module.exports.run = async (bot, msg, args, custom_functions) => {
             if(err) throw err;
           })
           let now = moment();
-          let sql = `insert into discord_bans(User, UserBy, Reason, UniqeID, Date, isBanned) values ("${tagged.id}", "${msg.author.id}", "${rn}", "${unqieID}", "${now.format('YYYY-MM-DD HH:mm:ss')}", "${true}")`;
-          con.query(sql)
           msg.reply(`Done!`)
+
         })
     })
 }
- 
 module.exports.help = {
-  name: "eban",
+  name: "ban",
   aliases: ["ban", "b"],
   permission: 2,
 }
