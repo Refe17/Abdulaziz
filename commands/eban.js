@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const moment = require('moment');
 const ms = require("ms");
 const fs = require("fs")
 const bantimer = JSON.parse(fs.readFileSync("./timer/bantimer.json", "utf8"));
@@ -47,14 +46,13 @@ module.exports.run = async (bot, msg, args, custom_functions) => {
           fs.writeFile('./timer/bantimer.json', JSON.stringify(bantimer, null, 4), err =>{
             if(err) throw err;
           })
-          let now = moment();
           msg.reply(`Done!`)
 
         })
     })
 }
 module.exports.help = {
-  name: "ban",
+  name: "eban",
   aliases: ["ban", "b"],
   permission: 2,
 }
