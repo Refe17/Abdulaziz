@@ -2,9 +2,8 @@ const Discord = require ("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 const prefix = "$"
 const ms = require ("ms");
-const ytdl = require ('ytdl-core')
+const botconfig = require ("./botconfig.json")
 const fs = require ("fs");
-const active = new Map()
 bot.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files)=>{
@@ -22,9 +21,6 @@ jsfile.forEach((f,i) =>{
     bot.commands.set(props.help.name, props);
 })
 })
-let ops = {
-    active: active
-}
 
 bot.on(`ready`, ()=>{
   console.log(`${bot.user.username} is online!`);
@@ -432,7 +428,7 @@ message.channel.send(killEmbed);
       .addField("Reason:", bReason);
 
 
-    let banChannel = bot.channels.get('523612546037448706').send(banEmbed)
+    let banChannel = bot.channels.get('517612704223985666').send(banEmbed)
     if(!banChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(bUser).ban(bReason).then(message.channel.send("**DONE!**")).then(()=>{
       banChannel.send(banEmbed).then(()=>{
@@ -591,7 +587,7 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
   if (oldMessage.content === newMessage.content){
   return;
   }
-  var logchannel = bot.channels.get("519549974200188953")
+  var logchannel = bot.channels.get("523794629020090369")
   
   let logEmbed = new Discord.RichEmbed()
   .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
@@ -618,6 +614,24 @@ bot.on("messageDelete", async message => {
   .addField("Message", message.content, true)
   
   deletechannel.send(deleteEmbed);
+})
+bot.on("message", async message => {
+
+
+  var sendchannel = bot.channels.get("523794576838885376")
+  
+  let sendEmbed = new Discord.RichEmbed()
+  .setAuthor(message.author.tag, message.author.avatarURL)
+  .setThumbnail(message.author.avatarURL)
+  .setColor("#96003e")
+  .setDescription("Message Received")
+  .setTimestamp()
+  .addField("Channel", `${message.channel} ID: ${message.channel.id}`)
+  .addField("Channel Name", `${message.channel.name}`)
+  .addField("Message", message.content, true)
+  .addField("Server ID", `${message.guild.id}`)
+  
+  sendchannel.send(sendEmbed);
 })
 
 bot.login(process.env.BOT_TOKEN)
