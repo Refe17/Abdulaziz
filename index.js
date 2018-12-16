@@ -5,7 +5,6 @@ const ms = require ("ms");
 const ytdl = require ('ytdl-core')
 const fs = require ("fs");
 const active = new Map()
-const ownerID = "284151161291014144"
 bot.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files)=>{
@@ -24,7 +23,6 @@ jsfile.forEach((f,i) =>{
 })
 })
 let ops = {
-    ownerID: ownerID,
     active: active
 }
 
