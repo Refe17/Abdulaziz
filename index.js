@@ -3,6 +3,8 @@ const bot = new Discord.Client({disableEveryone: true});
 const prefix = "$"
 const ms = require ("ms");
 const fs = require ("fs");
+const active = new Map()
+const ownerID = "284151161291014144"
 bot.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files)=>{
@@ -20,7 +22,10 @@ jsfile.forEach((f,i) =>{
     bot.commands.set(props.help.name, props);
 })
 })
-
+let ops = {
+    ownerID: ownerID,
+    active: active
+}
 bot.on(`ready`, ()=>{
   console.log(`${bot.user.username} is online!`);
   console.log(`----------------`);
