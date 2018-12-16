@@ -434,7 +434,7 @@ message.channel.send(killEmbed);
       .addField("Reason:", bReason);
 
 
-    let banChannel = bot.channels.get('517612704223985666').send(banEmbed)
+    let banChannel = bot.channels.get('523612546037448706').send(banEmbed)
     if(!banChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(bUser).ban(bReason).then(message.channel.send("**DONE!**")).then(()=>{
       banChannel.send(banEmbed).then(()=>{
