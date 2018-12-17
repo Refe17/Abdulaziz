@@ -1,4 +1,3 @@
-const moment = require('moment');
 const ms = require("ms");
 const fs = require("fs")
 const bantimer = JSON.parse(fs.readFileSync("./timer/bantimer.json", "utf8"));
@@ -44,9 +43,6 @@ module.exports.run = async (bot, msg, args, custom_functions) => {
           fs.writeFile('./timer/bantimer.json', JSON.stringify(bantimer, null, 4), err =>{
             if(err) throw err;
           })
-          let now = moment();
-          let sql = `insert into discord_bans(User, UserBy, Reason, UniqeID, Date, isBanned) values ("${tagged.id}", "${msg.author.id}", "${rn}", "${unqieID}", "${now.format('YYYY-MM-DD HH:mm:ss')}", "${true}")`;
-          con.query(sql)
           msg.reply(`Done!`)
         })
     })
