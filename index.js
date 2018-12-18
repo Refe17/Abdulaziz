@@ -46,9 +46,33 @@ bot.on("message", async message => {
   let messageArray = message.content.split(" ");
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
-
+  let userM = message.guild.member(message.mentions.users.first() || message.guild.members.find(m => m.id === args[1]));
+  if(!message.content.toLowerCase().startsWith(prefix)) return;
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot,message,args,ops);
+
+  if(cmd === `${prefix}report`){
+  
+   let rUser = message.guild.member(message.mentions.users.first()|| message.guild.members.get(args[0]));
+   if (!rUser) return message.channel.send("Couldn't find user.");
+   let reason = args.join(" ").slice(22);
+
+
+   let reportEmbed = new Discord.RichEmbed()
+   .setColor("#96003e")
+   .addField("Reported User", `${rUser} ID : ${rUser.id}`, true)
+   .addField("Reported By", `${message.author} ID : ${message.author.id}`, true)
+   .addField("Channel", message.channel,true)
+   .addField("Time", message.createdAt,true)
+   .addField("Reason", reason,true)
+
+   let reportschannel = message.guild.channels.find(`id`, "524572511619514368")
+   if(!reportschannel) return message.channel.send("Couldn't find the reports channel")
+
+   message.delete().catch(O_o=>{});
+   reportschannel.send(reportEmbed);
+    return;
+  }
 
 
 if (message.content.startsWith(prefix + "hi")) {
@@ -60,7 +84,7 @@ if (message.content.startsWith(prefix + "hi")) {
     .setTimestamp()
     .setFooter("Vampires")
     .addField("من سيرفر", message.guild.name, true)
-    .addField ("المرسل", message.author.tag, true)
+    .addField ("المرسل", `<@${message.author.id}>`, true)
     .addField('محتوى الرسالة.',"" + argss + "")
     
     message.channel.send(hiEmbed);
@@ -416,10 +440,13 @@ message.channel.send(killEmbed);
 
   if(cmd === `${prefix}ban`){
     message.delete();
+    let bRole = message.guild.roles.find("name", "Discord STAFF")
+
+  if(message.member.roles.has(bRole.id)) {
+
     let bUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!bUser) return message.channel.send("Please Mention a User")
     let bReason = args.join(" ").slice(22);
-    if(!message.member.hasPermission("ADMINSTRATION")) return message.channel.send("No m8 you can't do that");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("No m8 you can't kick em");
 
     let banEmbed = new Discord.RichEmbed()
@@ -436,11 +463,10 @@ message.channel.send(killEmbed);
     if(!banChannel) return message.channel.send("Can't Find Channel");
     message.guild.member(bUser).ban(bReason).then(message.channel.send("**DONE!**")).then(()=>{
       banChannel.send(banEmbed).then(()=>{
-        return;
       })
     })
-   }
-  
+  }
+  }
   if (cmd === `${prefix}kick`){
     message.delete();
     let kUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
@@ -591,7 +617,7 @@ bot.on("messageUpdate", async(oldMessage, newMessage) => {
   if (oldMessage.content === newMessage.content){
   return;
   }
-  var logchannel = bot.channels.get("523794629020090369")
+  var logchannel = bot.channels.get("519549974200188953")
   
   let logEmbed = new Discord.RichEmbed()
   .setAuthor(oldMessage.author.tag, oldMessage.author.avatarURL)
@@ -622,7 +648,7 @@ bot.on("messageDelete", async message => {
 bot.on("message", async message => {
 
 
-  var sendchannel = bot.channels.get("523794576838885376")
+  var sendchannel = bot.channels.get("524643094717661185")
   
   let sendEmbed = new Discord.RichEmbed()
   .setAuthor(message.author.tag, message.author.avatarURL)
@@ -637,5 +663,4 @@ bot.on("message", async message => {
   
   sendchannel.send(sendEmbed);
 })
-
 bot.login(process.env.BOT_TOKEN)
